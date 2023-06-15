@@ -19,6 +19,8 @@ app.get('/home', (req, res) => {
   })
 })
 
-app.listen(8000, () => {
-  console.log('server is running at port 8000')
-})
+const port = process.env.PORT
+
+app.listen(port || 8000, () =>
+  console.log(`Server is running successfully on PORT ${port}`)
+)
