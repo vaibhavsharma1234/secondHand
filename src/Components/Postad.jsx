@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { FileUpload1 } from './FileUpload1'
 import { baseUrl } from '../config/api'
 import { useNavigate } from 'react-router-dom'
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import axios from 'axios'
 const Postad = () => {
   const [allValues, setAllValues] = useState({
@@ -19,9 +20,28 @@ const Postad = () => {
     setAllValues({ ...allValues, [e.target.name]: e.target.value })
     console.log(allValues)
   }
+  // const [file, setFile] = useState('')
   const handleDropDown = (e) => {
     setAllValues({ ...allValues, category: e.target.value })
   }
+  // console.log(file)
+  // useEffect(() => {
+  //   const getImage = async () => {
+  //     if (file) {
+  //       const data = new FormData()
+  //       // hummen data dala hai taki bhj paye
+  //       data.append('name', file.name)
+  //       data.append('file', file)
+
+  //       // api call toupload image then i will get url  then put urlin post.picture
+  //       let res = await axios.post(`${API_URL}/file/upload`, data)
+  //       post.picture = res.data // todo
+  //     }
+  //   }
+  //   getImage()
+  //   post.categories = location.search?.split('=')[1] || 'ALL'
+  //   post.username = account.username
+  // }, [file])
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(allValues)
@@ -57,7 +77,7 @@ const Postad = () => {
     })
 
     navigate('/')
-    // window.location.reload(false)
+    window.location.reload(false)
   }
   return (
     <div>
@@ -174,6 +194,22 @@ const Postad = () => {
               </div>
 
               <FileUpload1 allValues={allValues} setAllValues={setAllValues} />
+              {/* <div>
+                <label htmlFor="fileInput">
+                  <PlusCircleIcon
+                    fontSize="small"
+                    className="w-10"
+                    color="action"
+                  />
+                </label>
+                <input
+                  type="file"
+                  id="fileInput"
+                  style={{ display: 'none' }}
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+                {file && <h2>file uploaded</h2>}
+              </div> */}
             </div>
             <button
               type="submit"

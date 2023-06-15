@@ -41,6 +41,7 @@ const Item = () => {
         // console.log(user.email)
 
         setImages(res.data.images)
+        console.log(res.data.images)
       })
     }
     fetchData()
@@ -59,7 +60,8 @@ const Item = () => {
   const handleClick = () => {
     navigate('/')
   }
-  const { title, description, brand, location, category, price } = singlePost
+  const { title, description, brand, location, category, price, images } =
+    singlePost
   return (
     <div className="flex  flex-col">
       <Tooltip content="go-back">
@@ -73,12 +75,12 @@ const Item = () => {
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-4/5 mx-auto flex flex-col lg:flex-row ">
-            {/* <img
+            <img
               alt="ecommerce"
               className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src="https://dummyimage.com/400x400"
-            /> */}
-            <SlideShow img={images1} />
+              src={`./uploads/${images[0]}`}
+            />
+            {/* <SlideShow img={images1} /> */}
 
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
