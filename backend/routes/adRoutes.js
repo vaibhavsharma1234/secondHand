@@ -1,7 +1,7 @@
 const express = require('express')
 const router = require('express').Router()
 const { authUser } = require('../middlewares/authUser')
-const { upload } = require('../config/multer')
+const { upload, multerMiddleware } = require('../config/multer')
 const {
   postAd,
   getAds,
