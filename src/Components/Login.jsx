@@ -4,10 +4,11 @@ import axios from 'axios'
 import Header from './Header'
 import { ArrowUturnLeftIcon } from '@heroicons/react/24/solid'
 import { Tooltip } from '@material-tailwind/react'
+import { baseUrl } from '../config/api'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const baseUrl = 'http://localhost:8000'
+  // const baseUrl = 'http://localhost:8000'
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault()

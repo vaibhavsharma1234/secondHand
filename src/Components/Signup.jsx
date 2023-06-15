@@ -13,13 +13,13 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 // import Header from './Header'
-
+import { baseUrl } from '../config/api'
 export default function Signup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [key, setKey] = useState(0)
-  const baseUrl = 'http://localhost:8000'
+  // const baseUrl = 'http://localhost:8000'
   const clearClickHandler = () => setKey((k) => k + 1)
   const navigate = useNavigate()
   const handleClick = (e) => {
