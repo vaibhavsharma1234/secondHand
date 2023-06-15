@@ -36,7 +36,7 @@ const Postad = () => {
     formData.append('description', allValues.description)
     formData.append('location', allValues.location)
     formData.append('price', allValues.price)
-    alert(formData)
+    // alert(formData)
     // make the api call
     const token = JSON.parse(sessionStorage.getItem('token'))
     const headers = {
@@ -57,7 +57,7 @@ const Postad = () => {
     })
 
     navigate('/')
-    window.location.reload(false)
+    // window.location.reload(false)
   }
   return (
     <div>

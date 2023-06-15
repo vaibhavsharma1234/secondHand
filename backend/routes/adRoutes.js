@@ -13,7 +13,7 @@ const {
   getComments,
   deleteComment,
 } = require('../controllers/adController')
-router.post('/postad', authUser, upload, postAd)
+router.post('/postad', authUser, upload, multerMiddleware, postAd)
 router.get('/getads', getAds)
 router.get('/getads/:id', getAd)
 router.get('/myads', authUser, myads)

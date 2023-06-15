@@ -3,12 +3,12 @@ const path = require('path')
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../', 'public', 'uploads'))
-    if (process.env.NODE_ENV === 'production') {
-      cb(null, path.join(__dirname, '../client/build/uploads'))
-    } else {
-      cb(null, path.join(__dirname, '../../public/uploads'))
-    }
+    cb(null, path.join(__dirname, '../../', 'dist', 'uploads'))
+    // if (process.env.NODE_ENV === 'production') {
+    //   cb(null, path.join(__dirname, '../client/build/uploads'))
+    // } else {
+    //   cb(null, path.join(__dirname, '../../public/uploads'))
+    // }
   },
 
   filename: (req, file, cb) => {
