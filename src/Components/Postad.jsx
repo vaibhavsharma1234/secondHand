@@ -1,9 +1,10 @@
 import { FileUpload } from './FileUpload'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { FileUpload1 } from './FileUpload1'
 import { baseUrl } from '../config/api'
 import { useNavigate } from 'react-router-dom'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import { DataContext } from '../context/DataContext'
 import axios from 'axios'
 const Postad = () => {
   const [allValues, setAllValues] = useState({
@@ -14,7 +15,10 @@ const Postad = () => {
     category: '',
     price: null,
     images: [],
+    image1: '',
   })
+  // const { imageval, setImageVal } = useContext(DataContext)
+  const [file, setFile] = useState('')
   const navigate = useNavigate()
   const handleChange = (e) => {
     setAllValues({ ...allValues, [e.target.name]: e.target.value })
@@ -44,11 +48,12 @@ const Postad = () => {
   // }, [file])
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     console.log(allValues)
     const formData = new FormData()
-    for (let i = 0; i < allValues.images.length; i++) {
-      formData.append('images', allValues.images[i].file)
-    }
+    // for (let i = 0; i < allValues.images.length; i++) {
+    //   formData.append('images', allValues.images[i].file)
+    // }
     formData.append('title', allValues.title)
     formData.append('brand', allValues.brand)
     formData.append('category', allValues.category)
@@ -56,7 +61,9 @@ const Postad = () => {
     formData.append('description', allValues.description)
     formData.append('location', allValues.location)
     formData.append('price', allValues.price)
+    formData.append('image1', file)
     // alert(formData)
+    console.log(formData)
     // make the api call
     const token = JSON.parse(sessionStorage.getItem('token'))
     const headers = {
@@ -76,8 +83,8 @@ const Postad = () => {
       location: '',
     })
 
-    navigate('/')
-    window.location.reload(false)
+    // navigate('/')
+    // window.location.reload(false)
   }
   return (
     <div>
@@ -193,7 +200,12 @@ const Postad = () => {
                 />
               </div>
 
-              <FileUpload1 allValues={allValues} setAllValues={setAllValues} />
+              <FileUpload1
+                allValues={allValues}
+                setAllValues={setAllValues}
+                file={file}
+                setFile={setFile}
+              />
               {/* <div>
                 <label htmlFor="fileInput">
                   <PlusCircleIcon

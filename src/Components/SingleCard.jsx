@@ -33,6 +33,7 @@ export default function SingleCard({
   images,
   _id,
   user,
+  image1,
 }) {
   const navigate = useNavigate()
   const handleClick = (id) => {
@@ -54,7 +55,7 @@ export default function SingleCard({
   return (
     <Card className="w-full md:max-w-[26rem] shadow-lg">
       <CardHeader floated={false} color="blue-gray">
-        <img src={`./uploads/${images[0]}`} />
+        <img src={image1} />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
         <IconButton
           size="sm"

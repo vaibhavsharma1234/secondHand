@@ -27,6 +27,9 @@ const AdSchema = new Schema(
     images: {
       type: [String],
     },
+    image1: {
+      type: String,
+    },
     location: {
       type: String,
       required: true,

@@ -7,7 +7,8 @@ const postAd = asyncHandler(async (req, res) => {
   const user = req.user
   const filenames = req.files.map((file) => file.filename)
   console.log(filenames)
-  const { title, description, brand, location, price, category } = req.body
+  const { title, description, brand, location, price, category, image1 } =
+    req.body
 
   if (
     !title ||
@@ -27,6 +28,7 @@ const postAd = asyncHandler(async (req, res) => {
     brand,
 
     images: filenames,
+    image1,
     location,
     price,
     category,

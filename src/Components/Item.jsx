@@ -25,6 +25,7 @@ const Item = () => {
     category: '',
     price: null,
     images: [],
+    image1: '',
   })
   const [images1, setImages] = useState([])
   // let loggedUser
@@ -60,8 +61,16 @@ const Item = () => {
   const handleClick = () => {
     navigate('/')
   }
-  const { title, description, brand, location, category, price, images } =
-    singlePost
+  const {
+    title,
+    description,
+    brand,
+    location,
+    category,
+    price,
+    images,
+    image1,
+  } = singlePost
   return (
     <div className="flex  flex-col">
       <Tooltip content="go-back">
@@ -78,7 +87,7 @@ const Item = () => {
             <img
               alt="ecommerce"
               className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src={`./uploads/${images[0]}`}
+              src={image1}
             />
             {/* <SlideShow img={images1} /> */}
 

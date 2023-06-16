@@ -1,10 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ImageUploading from 'react-images-uploading'
 import '../styles/fileupload.css'
 import edit from '../images/pencil-square.svg'
 import deleteIcon from '../images/x-square-fill.svg'
+import {
+  TrashIcon,
+  PencilSquareIcon,
+  PlusCircleIcon,
+} from '@heroicons/react/24/solid'
+import { Tooltip } from '@material-tailwind/react'
+import { DataContext } from '../context/DataContext'
+import { useContext } from 'react'
+import { baseUrl } from '../config/api'
+import axios from 'axios'
+export function FileUpload1({ allValues, setAllValues, file, setFile }) {
+  const { imageval, setImageVal } = useContext(DataContext)
+  // const [file, setFile] = useState('')
+  useEffect(() => {
+    const getImage = async () => {
+      if (file) {
+        const data = new FormData()
+        // hummen data dala hai taki bhj paye
+        data.append('name', file.name)
+        data.append('file', file)
 
-export function FileUpload1({ allValues, setAllValues }) {
+        // api call toupload image then i will get url  then put urlin post.picture
+        let res = await axios.post(`${baseUrl}/api/file/upload`, data)
+        console.log(res.data)
+        setImageVal(res.data) // todo
+        setFile(res.data)
+      }
+    }
+    getImage()
+    // post.categories = location.search?.split('=')[1] || 'ALL'
+    // post.username = account.username
+  }, [file])
+
   const maxNumber = 1
 
   const onChange = (imageList) => {
@@ -12,11 +43,25 @@ export function FileUpload1({ allValues, setAllValues }) {
       ...allValues,
       images: imageList,
     })
+    setImageVal(imageList)
+    console.log(imageList)
   }
 
   return (
     <div className="file_uploads">
-      <ImageUploading
+      <div>
+        <label htmlFor="fileInput">
+          <PlusCircleIcon fontSize="small" className="w-10" color="action" />
+        </label>
+        <input
+          type="file"
+          id="fileInput"
+          style={{ display: 'none' }}
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        {file && <h2>file uploaded</h2>}
+      </div>
+      {/* <ImageUploading
         multiple
         value={allValues.images}
         onChange={onChange}
@@ -58,24 +103,28 @@ export function FileUpload1({ allValues, setAllValues }) {
                     width="100"
                     style={{ height: '100px' }}
                   />
-                  <img
-                    src={edit}
-                    alt="edit"
-                    className="editicon"
-                    onClick={() => onImageUpdate(index)}
-                  />
-                  <img
-                    src={deleteIcon}
-                    alt="deleteicon"
-                    className="deleteicon"
-                    onClick={() => onImageRemove(index)}
-                  />
+                  <Tooltip content="deleteImg">
+                    <span className="cursor-pointer rounded-full border border-blue-500/5 bg-blue-500/5 p-3 text-blue-500 transition-colors hover:border-blue-500/10 hover:bg-blue-500/10 hover:!opacity-100 group-hover:opacity-70">
+                      <TrashIcon
+                        onClick={() => onImageRemove(index)}
+                        className="h-5 w-5"
+                      />
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="updateImg">
+                    <span className="cursor-pointer rounded-full border border-blue-500/5 bg-blue-500/5 p-3 text-blue-500 transition-colors hover:border-blue-500/10 hover:bg-blue-500/10 hover:!opacity-100 group-hover:opacity-70">
+                      <PencilSquareIcon
+                        onClick={() => onImageUpdate(index)}
+                        className="h-5 w-5"
+                      />
+                    </span>
+                  </Tooltip>
                 </div>
               ))}
             </div>
           </div>
         )}
-      </ImageUploading>
+      </ImageUploading> */}
     </div>
   )
 }
