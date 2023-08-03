@@ -20,7 +20,7 @@ app.get('/home', (req, res) => {
 })
 const { getImage } = require('./controllers/imageController')
 app.get('/file/:filename', getImage)
-const port = 8000
+const port = process.env.PORT
 // if (process.env.NODE_ENV === 'production') {
 //   // '../../', 'public', 'uploads'
 //   app.use(express.static(path.join(__dirname, '../', 'build')))
