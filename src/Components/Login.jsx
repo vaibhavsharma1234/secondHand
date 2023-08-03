@@ -3,7 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
 import { ArrowUturnLeftIcon } from '@heroicons/react/24/solid'
-import { Tooltip } from '@material-tailwind/react'
+// import { Tooltip } from '@material-tailwind/react'
+import {
+  
+  Button,
+  
+} from '@material-tailwind/react'
 import { baseUrl } from '../config/api'
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -45,14 +50,10 @@ export default function Login() {
       {/* <Header /> */}
 
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-        <Tooltip content="go-back">
-          <span
-            onClick={handleClick}
-            className="cursor-pointer w-12 rounded-full border border-blue-500/5 bg-blue-500/5 p-3 text-blue-500 transition-colors hover:border-blue-500/10 hover:bg-blue-500/10 hover:!opacity-100 group-hover:opacity-70"
-          >
-            <ArrowUturnLeftIcon className="h-5 w-5" />
-          </span>
-        </Tooltip>
+      <Button   onClick={handleClick} className="p-4 m-4 w-[8vw] hover:bg-black-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
+          <span>Go Back</span>
+        </Button>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">
             Sign in

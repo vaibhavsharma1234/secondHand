@@ -56,14 +56,18 @@ export default function Signup() {
     <>
       {/* <Header /> */}
       <div>
-        <Tooltip content="go-back">
+        {/* <Tooltip content="go-back">
           <span
             onClick={handleClickBack}
             className="cursor-pointer block w-12 rounded-full border border-blue-500/5 bg-blue-500/5 p-3 text-blue-500 transition-colors hover:border-blue-500/10 hover:bg-blue-500/10 hover:!opacity-100 group-hover:opacity-70"
           >
-            <ArrowUturnLeftIcon className="h-5 w-5" />
+
           </span>
-        </Tooltip>
+        </Tooltip> */}
+        <Button   onClick={handleClickBack} className="p-4 m-4 hover:bg-black-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
+          <span>Go Back</span>
+        </Button>
       </div>
       <div className="flex items-center justify-center h-screen">
         <Card color="transparent" shadow={false}>

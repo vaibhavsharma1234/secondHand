@@ -82,9 +82,9 @@ const Postad = () => {
       images: [],
       location: '',
     })
-
-    navigate('/')
-    window.location.reload(false)
+   
+    // navigate('/')
+    // window.location.reload(false)
   }
   return (
     <div>

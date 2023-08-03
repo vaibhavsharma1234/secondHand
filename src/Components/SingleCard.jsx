@@ -52,10 +52,20 @@ export default function SingleCard({
   const handleUpdate = (id) => {
     navigate(`/update/${id}`)
   }
+  
+    const obj={
+      'ALL': 'ALL', 
+     'LAF': 'Lost and Found',
+      'ELE': 'Electronic',
+     'STD': 'Study',
+      'OT':  'Others',
+    }
+    const categoryDisplay = obj[category]
   return (
+
     <Card className="w-full bg-white rounded-lg shadow-lg mt-4 border-black border-[0.1rem] overflow-hidden hover:shadow-xl transform transition-transform duration-300 hover:-translate-y-2  p-4">
-      <CardHeader floated={false} color="blue-gray">
-        <img src={image1} className="w-full h-44 object-cover rounded-t-lg" />
+      <CardHeader floated={false} className='h-[30vh]' color="blue-gray">
+        <img src={image1} className="w-full  object-cover rounded-t-lg" />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
         <IconButton
           size="sm"
@@ -82,10 +92,10 @@ export default function SingleCard({
         <Typography variant="h5" color="blue-gray" className="font-medium">
           {brand}
         </Typography>
-        <Typography color="gray">{description}</Typography>
+        <Typography className="overflow-hidden h-[20vh] md:h-[10vh]" color="gray">{description.length> 230 ? description.slice(0,230) + '...':description}</Typography>
 
         <Typography variant="h5" color="blue-gray" className="font-medium">
-          {category}
+          {categoryDisplay}
         </Typography>
         <div className="group mt-8 inline-flex flex-wrap items-center gap-3">
           <Tooltip content={`${price}rupees`}>

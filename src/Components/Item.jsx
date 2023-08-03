@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
 import { ArrowUturnLeftIcon } from '@heroicons/react/24/solid'
 import { Tooltip } from '@material-tailwind/react'
+import { Card } from 'flowbite-react';
 import Header from './Header'
 import Comments from './Comments'
 
@@ -71,32 +72,35 @@ const Item = () => {
     images,
     image1,
   } = singlePost
+  const obj={
+    'ALL': 'ALL', 
+   'LAF': 'Lost and Found',
+    'ELE': 'Electronic',
+   'STD': 'Study',
+    'OT':  'Others',
+  }
+  const categoryDisplay = obj[category]
   return (
     <div
-      className="bg-local bg-cover bg-center h-[100vh]"
-      style={{ backgroundImage: "url('./../images/bg.jpg')" }}
+    
     >
-      {/* <img src="./../images/bg.jpg" /> */}
+     
       <Header />
-      <div className="flex  flex-col">
-        {/* <Tooltip content="go-back">
-          <span
-            onClick={handleClick}
-            className="cursor-pointer w-12 rounded-full border border-blue-500/5 bg-blue-500/5 p-3 text-blue-500 transition-colors hover:border-blue-500/10 hover:bg-blue-500/10 hover:!opacity-100 group-hover:opacity-70"
-          >
-            <ArrowUturnLeftIcon className="h-5 w-5" />
-          </span>
-        </Tooltip> */}
+      
+      <div className="flex m-8 flex-col shadow-2xl rounded border-2 ">
+       
         <section className="text-gray-600 body-font overflow-hidden">
           <div className="container px-5 py-24 mx-auto">
-            <div className="lg:w-4/5 mx-auto flex flex-col justify-evenly lg:flex-row ">
-              <img
-                alt="ecommerce"
-                className="lg:w-1/2 w-full lg:h-auto h-64 object-cover mr-4  border-black border-[0.1rem] shadow-xl object-center rounded"
-                src={image1}
-              />
+            <div className=" mx-auto flex flex-col justify-evenly lg:flex-row ">
+             
+              <Card className='mr-2 '
+               
+              >
+                <img src= {image1}/>
+              </Card>
 
-              <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 shadow-xl  border-black border-[0.1rem]">
+              <Card className='mt-3 md:mt-0'>
+              <div className=" w-full  ">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
                   {brand}
                 </h2>
@@ -167,7 +171,7 @@ const Item = () => {
                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                   <div className="flex">
                     <span className="mr-3">{location}</span>
-                    <span className="mr-3">{category}</span>
+                    <span className="mr-3">{categoryDisplay}</span>
                   </div>
                 </div>
                 <div className="flex flex-row gap-x-6">
@@ -197,6 +201,8 @@ const Item = () => {
                   )}
                 </div>
               </div>
+
+              </Card>
             </div>
           </div>
         </section>

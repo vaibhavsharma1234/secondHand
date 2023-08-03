@@ -10,11 +10,12 @@ const user = {
 }
 
 const initialNavigation = [
-  { name: 'ALL', href: '#', current: true },
-  { name: 'LAF', href: '#', current: false },
-  { name: 'ELE', href: '#', current: false },
-  { name: 'STD', href: '#', current: false },
-  { name: 'OT', href: '#', current: false },
+  { name: 'ALL',key: 'ALL', href: '#', current: true },
+  { name: 'LAF',key: 'Lost and Found', href: '#', current: false },
+  { name: 'ELE',key: 'Electronic', href: '#', current: false },
+  { name: 'STD',key: 'Study', href: '#', current: false },
+  { name: 'OT',key:  'Others', href: '#', current: false },
+  
 ]
 
 function classNames(...classes) {
@@ -74,7 +75,7 @@ export default function Categories2({ filterItems }) {
                             aria-current={item.current ? 'page' : undefined}
                             onClick={() => handleClick(item.name)}
                           >
-                            {item.name}
+                            {item.key}
                           </a>
                         ))}
                       </div>
@@ -87,11 +88,7 @@ export default function Categories2({ filterItems }) {
                         <div>
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
-                            {/* <img
-                              className="h-8 w-8 rounded-full"
-                              src={user.imageUrl}
-                              alt=""
-                            /> */}
+
                           </Menu.Button>
                         </div>
                         <Transition
@@ -142,7 +139,7 @@ export default function Categories2({ filterItems }) {
                       aria-current={item.current ? 'page' : undefined}
                       onClick={() => handleClick(item.name)}
                     >
-                      {item.name}
+                      {item.key}
                     </Disclosure.Button>
                   ))}
                 </div>

@@ -15,30 +15,19 @@ const Categories = ({ handleClick }) => {
         onChange={handleTabChange}
       >
         <Tabs.Item id="ALL" value="ALL" title="ALL" selected={tab === 'ALL'}>
-          {/* <p className="text-sm text-gray-500 dark:text-gray-400">
-            <p>
-              This is some placeholder content the
-              <span className="font-medium text-gray-800 dark:text-white">
-                Profile tab's associated content
-              </span>
-              . Clicking another tab will toggle the visibility of this one for
-              the next. The tab JavaScript swaps classes to control the content
-              visibility and styling.
-            </p>
-          </p> */}
-          {/* <Cards ads={ads} /> */}
+         
         </Tabs.Item>
-        <Tabs.Item id="LAF" title="LAF" value="LAF" selected={tab === 'LAF'}>
-          {/* <Cards ads={ads} /> */}
+        <Tabs.Item id="LAF"  value="LAF" title="Lost & Found" selected={tab === 'LAF'}>
+         
         </Tabs.Item>
-        <Tabs.Item id="ELE" value="ELE" title="ELE" selected={tab === 'ELE'}>
-          {/* <Cards ads={ads} /> */}
+        <Tabs.Item id="ELE" value="ELE" title="Electronic" selected={tab === 'ELE'}>
+       
         </Tabs.Item>
-        <Tabs.Item id="STD" value="STD" title="STD" selected={tab === 'STD'}>
-          {/* <Cards ads={ads} /> */}
+        <Tabs.Item id="STD" value="STD" title="Study" selected={tab === 'STD'}>
+         
         </Tabs.Item>
-        <Tabs.Item id="OT" value="OT" title="OT" selected={tab === 'OT'}>
-          {/* <Cards ads={ads} /> */}
+        <Tabs.Item id="OT" value="OT" title="Others" selected={tab === 'OT'}>
+        
         </Tabs.Item>
       </Tabs.Group>
     </div>

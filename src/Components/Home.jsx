@@ -77,25 +77,27 @@ const Home = () => {
       <Header />
       {/* <Categories1 filterItems={filterItems} /> */}
       <Categories2 filterItems={filterItems} />
-      {ads.length > 0 ? (
-        <Cards
-          ads={result}
-          setAds={setAds}
-          category={category}
-          setCategory={setCategory}
-        />
-      ) : (
-        <div className="flex justify-center items-center h-[50vh] ">
-          <div
-            className="inline-block  h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status"
-          >
-            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-              Loading...
-            </span>
+      <div  className="m-8 shadow-2xl rounded border-2 ">
+        {ads.length > 0 ? (
+          <Cards
+            ads={result}
+            setAds={setAds}
+            category={category}
+            setCategory={setCategory}
+          />
+        ) : (
+          <div className="flex justify-center items-center h-[50vh] ">
+            <div
+              className="inline-block  h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            >
+              <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                Loading...
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
       <Footer />
     </div>
   )

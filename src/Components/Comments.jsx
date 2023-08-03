@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { baseUrl } from '../config/api'
 import Comment from './Comment'
+import { NewComment } from './NewComment'
 export default function Comments() {
   const params = useParams()
   //   console.log(params)
@@ -60,8 +61,8 @@ export default function Comments() {
     })
   }
   return (
-    <div className="relative w-[32rem]">
-      <div className="bg-blue-500 text-white p-4 mb-4">
+    <div className="relative w-[60vw] m-4">
+      <div className="text-center text-black p-4 mb-4">
         <h2 className="text-2xl font-bold">COMMENTS</h2>
       </div>
 
@@ -95,12 +96,20 @@ export default function Comments() {
         </div>
       )}
 
-      <div>
+      {/* <div>
         {comments &&
           comments.length > 0 &&
           comments.map((comment) => {
             return <Comment comment={comment} setTogle={setTogle} />
           })}
+      </div> */}
+      <div className='grid grid-cols-1  md:grid-cols-2 gap-4 w-[100%]  mt-2 '  >
+        {
+          comments && comments.length>0 && 
+          comments.map((comment)=>{
+            return < NewComment   comment={comment} setTogle={setTogle}/>
+          })
+        }
       </div>
     </div>
   )
