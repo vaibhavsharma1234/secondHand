@@ -61,11 +61,9 @@ export default function Comments() {
   }
   return (
     <div className="relative w-[32rem]">
-      <h1 className="text-5xl font-extrabold dark:text-white">
-        <small className="ml-2 font-semibold text-gray-500 dark:text-gray-400">
-          COMMENTS
-        </small>
-      </h1>
+      <div className="bg-blue-500 text-white p-4 mb-4">
+        <h2 className="text-2xl font-bold">COMMENTS</h2>
+      </div>
 
       {user && (
         <div>

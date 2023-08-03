@@ -83,8 +83,8 @@ const Postad = () => {
       location: '',
     })
 
-    // navigate('/')
-    // window.location.reload(false)
+    navigate('/')
+    window.location.reload(false)
   }
   return (
     <div>

@@ -1,6 +1,8 @@
 import Cards from './Cards'
 import Categories from './Categories'
+import Categories2 from './Categories2'
 import Header from './Header'
+import Footer from './footer'
 // import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Tabs } from 'flowbite-react'
@@ -73,13 +75,28 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <Categories1 filterItems={filterItems} />
-      <Cards
-        ads={result}
-        setAds={setAds}
-        category={category}
-        setCategory={setCategory}
-      />
+      {/* <Categories1 filterItems={filterItems} /> */}
+      <Categories2 filterItems={filterItems} />
+      {ads.length > 0 ? (
+        <Cards
+          ads={result}
+          setAds={setAds}
+          category={category}
+          setCategory={setCategory}
+        />
+      ) : (
+        <div className="flex justify-center items-center h-[50vh] ">
+          <div
+            className="inline-block  h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          >
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
+          </div>
+        </div>
+      )}
+      <Footer />
     </div>
   )
 }

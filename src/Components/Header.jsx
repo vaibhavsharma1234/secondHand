@@ -29,6 +29,9 @@ export default function Header() {
   const notify = () => {
     alert('first login ')
   }
+  const handleClick = () => {
+    navigate('/')
+  }
   return (
     <Navbar className="mx-auto max-w-screen-xl px-4 py-3">
       <div className="flex flex-wrap items-center justify-between  gap-y-4 text-blue-gray-900">
@@ -38,7 +41,7 @@ export default function Header() {
           variant="h6"
           className="mr-4 ml-2 cursor-pointer py-1.5"
         >
-          <div className="flex gap-x-2">
+          <div className="flex gap-x-2 text-xl " onClick={handleClick}>
             Second
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +70,7 @@ export default function Header() {
           </Button>
         </div>
         {!user && (
-          <div className="ml-auto flex gap-1 md:mr-4">
+          <div className="ml-auto flex gap-1 md:mr-4 text-xl">
             <Typography
               as="li"
               variant="small"
@@ -105,12 +108,12 @@ export default function Header() {
           </div>
         )}
         {user && (
-          <div className="ml-auto flex gap-2 md:mr-4">
+          <div className="ml-auto flex gap-2 md:mr-4 ">
             <Typography
               as="li"
               variant="small"
               color="blue-gray"
-              className="p-1 font-normal"
+              className="p-1 font-normal "
             >
               <a href="/" onClick={logout} className="flex items-center">
                 Logout

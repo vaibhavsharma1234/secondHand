@@ -53,9 +53,9 @@ export default function SingleCard({
     navigate(`/update/${id}`)
   }
   return (
-    <Card className="w-full md:max-w-[26rem] shadow-lg">
+    <Card className="w-full bg-white rounded-lg shadow-lg mt-4 border-black border-[0.1rem] overflow-hidden hover:shadow-xl transform transition-transform duration-300 hover:-translate-y-2  p-4">
       <CardHeader floated={false} color="blue-gray">
-        <img src={image1} />
+        <img src={image1} className="w-full h-44 object-cover rounded-t-lg" />
         <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 " />
         <IconButton
           size="sm"

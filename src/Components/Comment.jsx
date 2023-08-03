@@ -32,7 +32,7 @@ const Comment = ({ comment, setTogle }) => {
 
   const user = JSON.parse(sessionStorage.getItem('user'))
   return (
-    <div className="comment bg-gray-200 p-4 rounded-md mb-4">
+    <div className="comment bg-blue-200 p-4 rounded-md mb-4">
       <div className="comment-header flex items-center mb-2">
         <p className="comment-name font-bold mr-2">{comment.name}</p>
         <p className="comment-date text-gray-600">
