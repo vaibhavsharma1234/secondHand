@@ -70,7 +70,7 @@ const Postad = () => {
       Authorization: `Bearer ${token}`,
     }
     axios.post(`${baseUrl}/api/postad`, formData, { headers }).then((res) => {
-      console.log(res)
+      console.log(res,"hello")
     })
     setAllValues({
       title: '',
@@ -82,9 +82,10 @@ const Postad = () => {
       images: [],
       location: '',
     })
+
    
-    navigate('/')
-    window.location.reload(false)
+    // navigate('/')
+    // window.location.reload(false)
   }
   return (
     <div>
