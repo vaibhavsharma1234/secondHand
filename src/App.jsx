@@ -15,12 +15,14 @@ import ProductDetails from './pages/ProductDetails'
 import Otp from './Components/Otp'
 import Footer from './Components/footer'
 import DFooter from './Components/DFooter'
+import Map from './pages/Map'
 export default function App() {
   return (
     <>
       <DataProvider>
         <Router>
           <Routes>
+            <Route path='/map' element={<Map/>}/>
             <Route path='/' element={<LandingPage/>}/>
             <Route path='/product' element={<ProductPage/>}/>
             {/* <Route path='/product/details' element={<ProductDetails/>}/> */}
