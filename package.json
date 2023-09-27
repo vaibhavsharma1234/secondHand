@@ -9,7 +9,6 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -20,11 +19,11 @@
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.7",
     "react": "^18.2.0",
-    
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-images-uploading": "^3.1.7",
-    "react-router-dom": "^6.11.2"
+    "react-router-dom": "^6.11.2",
+    "react-scroll": "^1.8.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

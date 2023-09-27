@@ -13,13 +13,15 @@ import LandingPage from './pages/LandingPage'
 import ProductPage from './pages/ProductPage'
 import ProductDetails from './pages/ProductDetails'
 import Otp from './Components/Otp'
+import Footer from './Components/footer'
+import DFooter from './Components/DFooter'
 export default function App() {
   return (
     <>
       <DataProvider>
         <Router>
           <Routes>
-            <Route path='/landing' element={<LandingPage/>}/>
+            <Route path='/' element={<LandingPage/>}/>
             <Route path='/product' element={<ProductPage/>}/>
             {/* <Route path='/product/details' element={<ProductDetails/>}/> */}
             <Route path='/product/details/:id' element={<ProductDetails/>}/>
@@ -33,6 +35,7 @@ export default function App() {
             <Route path="/myads" element={<Myads />} />
             <Route path="/update/:id" element={<Updatead />} />
           </Routes>
+          <DFooter/>
         </Router>
       </DataProvider>
     </>

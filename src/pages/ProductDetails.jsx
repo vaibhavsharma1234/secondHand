@@ -5,6 +5,7 @@ import { baseUrl } from "../config/api";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import DNavbar from "./DNavbar";
 function ProductDetails() {
   const navigate = useNavigate()
   const params = useParams();
@@ -68,6 +69,7 @@ function ProductDetails() {
   } = singlePost;
   return (
     <>
+    <DNavbar/>
       <section class="text-gray-600 body-font overflow-hidden">
         <div class="container px-0 py-24 mx-auto">
           <div class="lg:w-full mx-auto flex flex-wrap">
