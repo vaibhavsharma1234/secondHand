@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { DataContext } from '../context/DataContext'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 const Postad = () => {
   const [allValues, setAllValues] = useState({
     title: '',
@@ -17,43 +19,24 @@ const Postad = () => {
     images: [],
     image1: '',
   })
-  // const { imageval, setImageVal } = useContext(DataContext)
+  
   const [file, setFile] = useState('')
   const navigate = useNavigate()
   const handleChange = (e) => {
     setAllValues({ ...allValues, [e.target.name]: e.target.value })
     console.log(allValues)
   }
-  // const [file, setFile] = useState('')
+ 
   const handleDropDown = (e) => {
     setAllValues({ ...allValues, category: e.target.value })
   }
-  // console.log(file)
-  // useEffect(() => {
-  //   const getImage = async () => {
-  //     if (file) {
-  //       const data = new FormData()
-  //       // hummen data dala hai taki bhj paye
-  //       data.append('name', file.name)
-  //       data.append('file', file)
-
-  //       // api call toupload image then i will get url  then put urlin post.picture
-  //       let res = await axios.post(`${API_URL}/file/upload`, data)
-  //       post.picture = res.data // todo
-  //     }
-  //   }
-  //   getImage()
-  //   post.categories = location.search?.split('=')[1] || 'ALL'
-  //   post.username = account.username
-  // }, [file])
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     console.log(allValues)
     const formData = new FormData()
-    // for (let i = 0; i < allValues.images.length; i++) {
-    //   formData.append('images', allValues.images[i].file)
-    // }
+    
     formData.append('title', allValues.title)
     formData.append('brand', allValues.brand)
     formData.append('category', allValues.category)
@@ -71,25 +54,38 @@ const Postad = () => {
     }
     axios.post(`${baseUrl}/api/postad`, formData, { headers }).then((res) => {
       console.log(res,"hello")
+    }).then((res)=>{
+      setAllValues({
+        title: '',
+        description: '',
+        brand: '',
+        condition: '',
+        category: 'Mobile Phones',
+        price: null,
+        images: [],
+        location: '',
+        latitude:'',
+        longitude:''
+      })
+      toast("product added")
+      setTimeout(() => {
+        navigate('/')
+      }, 5000);
+      
+  
     })
-    setAllValues({
-      title: '',
-      description: '',
-      brand: '',
-      condition: '',
-      category: 'Mobile Phones',
-      price: null,
-      images: [],
-      location: '',
+    .catch((error)=>{
+      toast("error",error)
     })
-
+    
    
-    // navigate('/')
+  
     // window.location.reload(false)
   }
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
+        <ToastContainer/>
         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             Add a new product

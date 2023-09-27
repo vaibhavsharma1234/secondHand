@@ -13,6 +13,8 @@ import axios from "axios";
 import { useState,useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { DataContext } from "../context/DataContext";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 // import Header from './Header'
 import { baseUrl } from "../config/api";
 export default function Signup() {
@@ -31,7 +33,7 @@ export default function Signup() {
     // console.log('hello')
     
     if(signup){
-      alert("helloooo")
+      // alert("helloooo")
       console.log(name, email, password);
       const data = {
         fullname: name,
@@ -59,11 +61,15 @@ export default function Signup() {
           setEmail("");
           setPassword("");
           clearClickHandler();
-          navigate("/login");
+          toast("successfully registered")
+          setTimeout(() => {
+            navigate("/login");
+          }, 5000);
+
           setSignUp(false)
           // navigate to  the login page
         } else {
-          alert("error hai vapas try kro from signup");
+          toast("error hai vapas try kro from signup");
         }
       });
     }else{
@@ -71,11 +77,12 @@ export default function Signup() {
       // call the send otp function 
       if(name && email && password){
 
-        alert("call the send otp function")
+        // alert("call the send otp function")
         axios.post(`${baseUrl}/api/otp/generate/?email=${email}&name=${name}`)
+        toast("otp is sent")
         setSignUp(true)
       }else{
-        alert("fill all details")
+        toast("fill all details")
       }
     
     }
@@ -91,7 +98,8 @@ export default function Signup() {
       
       
     }else{
-      alert("fill all details")
+    
+      // return  toast("fill all details")
     }
   }
   return (
@@ -106,6 +114,8 @@ export default function Signup() {
 
           </span>
         </Tooltip> */}
+        <ToastContainer />
+
         <Button
           onClick={handleClickBack}
           className="p-4 m-4 hover:bg-black-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
