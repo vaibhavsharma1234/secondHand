@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link, animateScroll as scroll, scroller } from 'react-scroll';
+
 
 function LandingPage() {
   const [tab, setTab] = useState(2);
@@ -19,36 +21,43 @@ function LandingPage() {
             </div>
           </div>
           <div className="w-1/2 text-white font-semibold text-5xl">
-            One simple ecosystem for smart living solutions
+            Welcome to SecondHand - Your College Marketplace!
           </div>
           <div className="w-1/4 flex justify-end pr-32 items-center">
             <a
-              href="https://www.flaticon.com/free-icons/scroll-down"
-              title="scroll down icons"
+              
             >
               <i class="fa-solid fa-circle-chevron-down text-white text-4xl animate-bounce"></i>
             </a>
           </div>
         </div>
         <div className="flex justify-between absolute w-full px-24 mx-auto top-12 z-50">
-            <div className="font-bold text-3xl text-white">SecondHand</div>
-          <div className="flex gap-8 text-lg font-bold text-white">
-            <a>Home</a>
-            <a>About</a>
-            <a>Support</a>
-            <a>Product</a>
-            <a>Solutions</a>
-            <a>Services</a>
-            <a>Contact Us</a>
+          <div className="font-bold text-3xl text-white">SecondHand</div>
+          <div className="flex gap-8 text-lg font-bold text-white items-center">
+          <Link to="moto" smooth={true} duration={500} offset={-50} isDynamic={true} >
+            <a className="cursor-pointer">Our Moto</a>
+            </Link>
+            <Link to="about" smooth={true} duration={500} offset={-50} isDynamic={true} >
+            <a className="cursor-pointer">About</a>
+            </Link>
+
+            <Link to="products" smooth={true} duration={500} offset={-50} isDynamic={true} >
+            <a  className="cursor-pointer">Products</a>
+            </Link>
+            <Link to="questions" smooth={true} duration={500} offset={-50} isDynamic={true} >
+            <a  className="cursor-pointer">Common Questions</a>
+            </Link>
+            <Link to="explore" smooth={true} duration={500} offset={-50} isDynamic={true} >
+            <a  className="cursor-pointer">Explore</a>
+            </Link>
           </div>
         </div>
         <div className="absolute z-20 h-full bg-gradient-to-r from-black/40 to-black/40 top-0 bottom-0 left-0 right-0"></div>
       </section>
 
-      <section className="w-11/12 my-32 mx-auto">
+      <section id="moto" className="w-11/12 my-32 mx-auto">
         <div className="w-3/5 text-black text-5xl font-semibold font-sans">
-          Build a smart home to uplift your everyday living and meaningful
-          moments.
+          Reduce waste, promote sustainability, and foster a sense of community.
         </div>
         <div className="flex my-12 w-full gap-8">
           <div
@@ -64,32 +73,29 @@ function LandingPage() {
         </div>
         <div className="w-full flex justify-between border-t-[1px] border-gray-200 py-8 font-base">
           <div>
-            <h1 className="font-semibold">01 - Memorable Care</h1>
+            <h1 className="font-semibold">01 - Buy Easily</h1>
             <p className="text-gray-700  py-2">
-              We're here to help when you need it, with human support that
-              exceeds expectations
+              Discover affordable, pre-loved items from fellow students.
             </p>
           </div>
           <div>
-            <h1 className="font-semibold">02 - Seamless Experiences</h1>
+            <h1 className="font-semibold">02 - Sell Responsibly</h1>
             <p className="text-gray-700 py-2">
-              We're here to help when you need it, with human support that
-              exceeds expectations
+              List your items, set your price, and help the community.
             </p>
           </div>
           <div>
-            <h1 className="font-semibold">03 - Welcome Guest</h1>
+            <h1 className="font-semibold">03 - Connect & Share</h1>
             <p className="text-gray-700  py-2">
-              We're here to help when you need it, with human support that
-              exceeds expectations
+              Join a caring community and make sustainable choices together.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="w-11/12 my-32 mx-auto">
+      <section id="products" className="w-11/12 my-32 mx-auto">
         <h2 className="text-5xl text-center font-semibold">
-          Start your system.
+          Browse Categories.
         </h2>
         <div className="border-b-[2px] border-b-gray-200 flex justify-center mx-auto">
           <div className="flex font-semibold justify-between mt-8 mb-2 gap-12 mx-auto">
@@ -143,204 +149,230 @@ function LandingPage() {
         {tab === 1 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
             <div className="row-span-2 col-span-2 bg-blue-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/SqLyNHbsLKQ'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/SqLyNHbsLKQ"}
+              ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/xsGxhtAsfSA'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/xsGxhtAsfSA"}
+              ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/h10-NImYZHs'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/h10-NImYZHs"}
+              ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/2KZwt-Jtl8c'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/LUGuCtvlk1Q"}
+              ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/2KZwt-Jtl8c'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/M_dJ_ScwaLE"}
+              ></img>
             </div>
           </div>
         )}
         {tab === 2 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
             <div className="row-span-2 col-span-2 bg-green-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/eF1XTtvDpYA'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/eF1XTtvDpYA"}
+              ></img>
             </div>
             <div className="row-span-1 bg-green-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/_WdDaZM6VIM'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/_WdDaZM6VIM"}
+              ></img>
             </div>
             <div className="row-span-1 bg-green-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/aiWjNA46Urc'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/aiWjNA46Urc"}
+              ></img>
             </div>
             <div className="row-span-1 bg-green-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/PXaQXThG1FY'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/PXaQXThG1FY"}
+              ></img>
             </div>
             <div className="row-span-1 bg-green-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/1SAnrIxw5OY'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/1SAnrIxw5OY"}
+              ></img>
             </div>
           </div>
         )}
         {tab === 3 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
             <div className="row-span-2 col-span-2 bg-red-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/qYxIVsHpDDo'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/qYxIVsHpDDo"}
+              ></img>
             </div>
             <div className="row-span-1 bg-red-400">
-              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/OMXPrCAhxrE'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/OMXPrCAhxrE"}
+              ></img>
             </div>
             <div className="row-span-1 bg-red-400">
-              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/SwCMZwrhQm8'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/SwCMZwrhQm8"}
+              ></img>
             </div>
             <div className="row-span-1 bg-red-400">
-              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/OLvQEjwCSVI'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/OLvQEjwCSVI"}
+              ></img>
             </div>
             <div className="row-span-1 bg-red-400">
-              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/pakTZIspHO0'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/pakTZIspHO0"}
+              ></img>
             </div>
           </div>
         )}
         {tab === 4 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
             <div className="row-span-2 col-span-2 bg-amber-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/2KZwt-Jtl8c'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/2KZwt-Jtl8c"}
+              ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/NOpsC3nWTzY'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/NOpsC3nWTzY"}
+              ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/dGIEMeN2MV8'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/dGIEMeN2MV8"}
+              ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/phS37wg8cQg'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/phS37wg8cQg"}
+              ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
-            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/Y6Hn79vRcXU'}></img>
+              <img
+                className="w-full h-full object-cover"
+                src={"https://source.unsplash.com/Y6Hn79vRcXU"}
+              ></img>
             </div>
           </div>
         )}
       </section>
 
-      <section className="my-32 flex w-full mx-auto bg-teal-200/60">
-        <div className="w-3/4 mx-auto flex py-20">
-          <div className="w-1/4 h-fit items-center flex justify-start gap-4">
-            <div className="bg-red-400 rounded-full h-14 w-14"></div>
-            <div className="flex flex-col">
-              <div className="font-medium text-lg">Deepak</div>
-              <div className="text-sm">Student of IIIT Una</div>
-            </div>
+      <section id="about" className="my-32 flex w-full mx-auto bg-teal-200/60">
+        <div className="w-full mx-auto flex py-20 justify-center">
+          <div className="w-2/4 font-medium text-2xl text-center">
+            "At SecondHand, we believe in the power of sharing and caring within
+            the college community. Our platform is dedicated to helping students
+            make responsible choices by offering their pre-loved items at
+            affordable prices or for free, all while assisting those in need.
+            Our mission is to reduce waste, promote sustainability, and foster a
+            sense of community among college students."
           </div>
-          <div className="w-2/4 font-medium text-2xl">
-            "I have always purchased my smart home devices from Bardi official
-            website. Their online support are always there! And they have all
-            kind of information. In terms of devices, I have never complained
-            about them since the purchase date. Great customer service, great
-            products. Thanks Bardi! For making things easy and simple!"
-          </div>
-          <div className="w-1/4 flex justify-end">Arrow left Arrow Right</div>
         </div>
       </section>
 
-      <section className="my-32 w-11/12 mx-auto">
-        <h1 className="font-bold text-5xl mb-12">Bardi in Media.</h1>
+      <section className="my-32 w-11/12 mx-auto" id="questions">
+        <h1 className="font-bold text-5xl mb-12">Common Questions.</h1>
         <div className="flex flex-row py-8 border-t-2">
           <div className="flex flex-col items-between gap-12 font-semibold w-3/5">
-            <div className="text-3xl w-1/2">
-              How Bardi Devices Can Give You a Helping Hand at Home
-            </div>
-            <div className="flex flex-row gap-12 place-items-baseline">
-              <div>Deepak Sharma</div>
-              <div>27 September 2023</div>
-            </div>
+            <div className="text-3xl w-1/2">How It Works</div>
           </div>
 
           <div className="flex flex-row w-2/5 gap-12">
             <div className="w-1/2 pt-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesettingm.
+              <ul class="list-disc">
+                <li>List your items at low cost or for free.</li>
+                <li>
+                  Browse and find what you need from generous fellow students.
+                </li>
+                <li>Enjoy a more sustainable and affordable college life.</li>
+              </ul>
             </div>
-            <div className="h-72 w-1/2 bg-blue-700"></div>
+            <div className="h-72 w-1/2 bg-amber-700"></div>
           </div>
         </div>
         <div className="flex flex-row py-8 border-t-2">
           <div className="flex flex-col items-between gap-12 font-semibold w-3/5">
-            <div className="text-3xl w-1/2">
-              How Bardi Devices Can Give You a Helping Hand at Home
-            </div>
-            <div className="flex flex-row gap-12 place-items-baseline">
-              <div>Deepak Sharma</div>
-              <div>27 September 2023</div>
-            </div>
+            <div className="text-3xl w-1/2">Why Sell Here</div>
           </div>
 
           <div className="flex flex-row w-2/5 gap-12">
             <div className="w-1/2 pt-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesettingm.
+              <ul class="list-disc">
+                <li>Clear out clutter and help others.</li>
+                <li>Contribute to a sustainable environment.</li>
+                <li>Support students by offering affordable or free items. </li>
+                <li>Easy listing process.</li>
+              </ul>
             </div>
-            <div className="h-72 w-1/2 bg-blue-700"></div>
+            <div className="h-72 w-1/2 bg-green-700"></div>
           </div>
         </div>
         <div className="flex flex-row py-8 border-t-2">
           <div className="flex flex-col items-between gap-12 font-semibold w-3/5">
-            <div className="text-3xl w-1/2">
-              How Bardi Devices Can Give You a Helping Hand at Home
-            </div>
-            <div className="flex flex-row gap-12 place-items-baseline">
-              <div>Deepak Sharma</div>
-              <div>27 September 2023</div>
-            </div>
+            <div className="text-3xl w-1/2">Why Buy Here</div>
           </div>
 
           <div className="flex flex-row w-2/5 gap-12">
             <div className="w-1/2 pt-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesettingm.
+              <ul class="list-disc">
+                <li>Affordable prices, including free items.</li>
+                <li>Wide variety of items.</li>
+                <li>Support your peers.</li>
+                <li>Easy listing process.</li>
+              </ul>
             </div>
             <div className="h-72 w-1/2 bg-blue-700"></div>
           </div>
         </div>
       </section>
 
-      <section className="flex w-11/12 mx-auto gap-12">
-        <div className="w-1/2 bg-no-repeat h-[500px] bg-gray-400 rounded-xl">
+      <section className="flex w-11/12 my-12 mx-auto gap-12" id="explore">
+        <div className="w-1/2 h-[500px] bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/X5BWooeO4Cw')] bg-gray-400 rounded-xl">
           <div className="text-center mx-auto w-3/5 text-4xl font-bold mt-24">
-            Grow your business with Bardi
+            Explore Our Exciting Listings
           </div>
           <div className="w-full flex my-32 justify-center">
             <button className="bg-white px-8 py-2 text-base mx-auto rounded-full font-bold">
-              Become a Partner
+              Browse Products
             </button>
           </div>
         </div>
-        <div className="w-1/2 bg-no-repeat bg-cover h-[500px]  bg-black rounded-xl">
+        <div className="w-1/2 h-[500px] bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/h8nxGssjQXs')] bg-black rounded-xl">
           <div className="text-center text-white mx-auto w-3/5 text-4xl font-bold mt-24">
-            Let's build something smart together
+            Join SecondHand Community Today
           </div>
           <div className="w-full flex my-32 justify-center">
             <button className="bg-white px-8 py-2 text-base mx-auto rounded-full font-bold">
-              Developer Portal
+              Sign Up Now
             </button>
           </div>
-        </div>
-      </section>
-
-      <section className="my-32 border-t-2 justify-between py-8 mx-auto flex w-11/12">
-        <div className="font-bold text-2xl w-2/5">Bardi Compatibility</div>
-        <div className="font-bold text-5xl flex w-3/5 justify-between">
-            <span>A</span>
-            <span>B</span>
-            <span>C</span>
-            <span>D</span>
         </div>
       </section>
     </>
