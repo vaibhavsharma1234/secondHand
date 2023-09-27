@@ -39,10 +39,10 @@ function ProductCard({ ad }) {
     navigate(`/update/${id}`);
   };
   return (
-    <div class="p-4 md:w-1/3"  >
+    <div class="p-4 w-full md:w-1/3"  >
       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <img
-        onClick={()=>handleClick(id)}
+        
           class="lg:h-48 md:h-36 w-full object-cover object-center"
           src={ad.image1}
           alt="blog"
@@ -66,7 +66,7 @@ function ProductCard({ ad }) {
             {ad.location}
           </p>
           <div class="flex items-center flex-wrap ">
-            <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
+            <a onClick={()=>handleClick(id)} class="text-indigo-500 inline-flex items-center cursor-pointer md:mb-2 lg:mb-0">
               Learn More
               <svg
                 class="w-4 h-4 ml-2"
