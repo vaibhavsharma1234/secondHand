@@ -21,12 +21,12 @@ function LandingPage() {
           <div className="w-1/2 text-white font-semibold text-5xl">
             One simple ecosystem for smart living solutions
           </div>
-          <div className="w-1/4">
+          <div className="w-1/4 flex justify-end pr-32 items-center">
             <a
               href="https://www.flaticon.com/free-icons/scroll-down"
               title="scroll down icons"
             >
-              Scroll down
+              <i class="fa-solid fa-circle-chevron-down text-white text-4xl animate-bounce"></i>
             </a>
           </div>
         </div>
@@ -52,12 +52,12 @@ function LandingPage() {
         </div>
         <div className="flex my-12 w-full gap-8">
           <div
-            className={`relative w-3/5 h-[500px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/SYTO3xs06fU')] rounded-3xl`}
+            className={`relative w-3/5 h-[500px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/_aXa21cf7rY')] rounded-3xl`}
           >
             <div className="absolute z-20 rounded-3xl h-full bg-gradient-to-r from-black/30 to-black/30 top-0 bottom-0 left-0 right-0"></div>
           </div>
           <div
-            className={`relative w-2/5 h-[500px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/SYTO3xs06fU')] rounded-3xl`}
+            className={`relative w-2/5 h-[500px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/ip9R11FMbV8')] rounded-3xl`}
           >
             <div className="absolute z-20 rounded-3xl h-full bg-gradient-to-r from-black/30 to-black/30 top-0 bottom-0 left-0 right-0"></div>
           </div>
@@ -113,7 +113,7 @@ function LandingPage() {
                 tab === 2 ? "border-b-2 border-b-black" : ""
               }`}
             >
-              Smart Home
+              Electronics
             </span>
             <span
               onClick={(e) => {
@@ -124,7 +124,7 @@ function LandingPage() {
                 tab === 3 ? "border-b-2 border-b-black" : ""
               }`}
             >
-              Home Security
+              Study Materials
             </span>
             <span
               onClick={(e) => {
@@ -135,45 +135,85 @@ function LandingPage() {
                 tab === 4 ? "border-b-2 border-b-black" : ""
               }`}
             >
-              Industrial Appliances
+              Others
             </span>
           </div>
         </div>
 
         {tab === 1 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
-            <div className="row-span-2 col-span-2 bg-blue-400"></div>
-            <div className="row-span-1 bg-blue-400"></div>
-            <div className="row-span-1 bg-blue-400"></div>
-            <div className="row-span-1 bg-blue-400"></div>
-            <div className="row-span-1 bg-blue-400"></div>
+            <div className="row-span-2 col-span-2 bg-blue-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/SqLyNHbsLKQ'}></img>
+            </div>
+            <div className="row-span-1 bg-blue-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/xsGxhtAsfSA'}></img>
+            </div>
+            <div className="row-span-1 bg-blue-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/h10-NImYZHs'}></img>
+            </div>
+            <div className="row-span-1 bg-blue-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/2KZwt-Jtl8c'}></img>
+            </div>
+            <div className="row-span-1 bg-blue-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/2KZwt-Jtl8c'}></img>
+            </div>
           </div>
         )}
         {tab === 2 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
-            <div className="row-span-2 col-span-2 bg-green-400"></div>
-            <div className="row-span-1 bg-green-400"></div>
-            <div className="row-span-1 bg-green-400"></div>
-            <div className="row-span-1 bg-green-400"></div>
-            <div className="row-span-1 bg-green-400"></div>
+            <div className="row-span-2 col-span-2 bg-green-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/eF1XTtvDpYA'}></img>
+            </div>
+            <div className="row-span-1 bg-green-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/_WdDaZM6VIM'}></img>
+            </div>
+            <div className="row-span-1 bg-green-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/aiWjNA46Urc'}></img>
+            </div>
+            <div className="row-span-1 bg-green-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/PXaQXThG1FY'}></img>
+            </div>
+            <div className="row-span-1 bg-green-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/1SAnrIxw5OY'}></img>
+            </div>
           </div>
         )}
         {tab === 3 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
-            <div className="row-span-2 col-span-2 bg-red-400"></div>
-            <div className="row-span-1 bg-red-400"></div>
-            <div className="row-span-1 bg-red-400"></div>
-            <div className="row-span-1 bg-red-400"></div>
-            <div className="row-span-1 bg-red-400"></div>
+            <div className="row-span-2 col-span-2 bg-red-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/qYxIVsHpDDo'}></img>
+            </div>
+            <div className="row-span-1 bg-red-400">
+              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/OMXPrCAhxrE'}></img>
+            </div>
+            <div className="row-span-1 bg-red-400">
+              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/SwCMZwrhQm8'}></img>
+            </div>
+            <div className="row-span-1 bg-red-400">
+              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/OLvQEjwCSVI'}></img>
+            </div>
+            <div className="row-span-1 bg-red-400">
+              <img className="w-full h-full object-cover" src={'https://source.unsplash.com/pakTZIspHO0'}></img>
+            </div>
           </div>
         )}
         {tab === 4 && (
           <div className="grid grid-cols-4 grid-rows-2 gap-4 my-8 h-[600px]">
-            <div className="row-span-2 col-span-2 bg-amber-400"></div>
-            <div className="row-span-1 bg-amber-400"></div>
-            <div className="row-span-1 bg-amber-400"></div>
-            <div className="row-span-1 bg-amber-400"></div>
-            <div className="row-span-1 bg-amber-400"></div>
+            <div className="row-span-2 col-span-2 bg-amber-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/2KZwt-Jtl8c'}></img>
+            </div>
+            <div className="row-span-1 bg-amber-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/NOpsC3nWTzY'}></img>
+            </div>
+            <div className="row-span-1 bg-amber-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/dGIEMeN2MV8'}></img>
+            </div>
+            <div className="row-span-1 bg-amber-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/phS37wg8cQg'}></img>
+            </div>
+            <div className="row-span-1 bg-amber-400">
+            <img className="w-full h-full object-cover" src={'https://source.unsplash.com/Y6Hn79vRcXU'}></img>
+            </div>
           </div>
         )}
       </section>
