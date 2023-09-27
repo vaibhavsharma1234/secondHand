@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DNavbar from "./DNavbar";
+import DefaultMap from "./Map";
 function ProductDetails() {
   const navigate = useNavigate()
   const params = useParams();
@@ -29,7 +30,10 @@ function ProductDetails() {
     price: null,
     images: [],
     image1: "",
+    
   });
+  const [lati,setLat]=useState("")
+  const [longi,setLong]=useState("")
   const handleDelete = async (id) => {
     console.log(id)
     axios.delete(`${baseUrl}/api/delete/${id}`).then(() => {
@@ -47,8 +51,10 @@ function ProductDetails() {
       await axios.get(`${baseUrl}/api/getads/${id}`).then((res) => {
         // console.log(res.data.images)
         setSinglePost(res.data);
-        console.log(res.data);
+        console.log("h222",res.data);
         setUser(res.data.user);
+        setLat(res.data.lat)
+        setLong(res.data.long)
         // console.log('hello')
         // console.log(user.email)
 
@@ -68,6 +74,8 @@ function ProductDetails() {
     price,
     images,
     image1,
+    lat,
+    long
   } = singlePost;
   return (
     <>
@@ -211,6 +219,7 @@ function ProductDetails() {
           </div>
         </div>
       </section>
+      < DefaultMap lat={lati} long={longi}/>
       
       <DComments />
     </>

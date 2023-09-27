@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 
-function DefaultMap() {
+function DefaultMap({lat,long}) {
   useEffect(() => {
     // Create a function for initializing the map
-      const map = new window.mappls.Map('map', { center: [31.480743, 76.190828] });
-      map.setZoom(18);
-  }, []);
+    console.log("map",lat,long)
+      const map = new window.mappls.Map('map', { center: [lat, long] });
+      map.setZoom(14);
+  }, [lat]);
+  
 
   return (
     <div>

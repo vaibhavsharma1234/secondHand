@@ -39,6 +39,13 @@ const AdSchema = new Schema(
       ref: 'User',
       required: true,
     },
+    lat:{
+      type: String,
+    }
+    ,
+    long:{
+      type: String,
+    }
   },
   { timestamps: true }
 )
