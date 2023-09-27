@@ -353,7 +353,7 @@ function LandingPage() {
         </div>
       </section>
 
-      <section className="flex w-11/12 my-12 mx-auto gap-12" id="explore">
+      <section className="flex w-11/12 mt-12 mb-32 mx-auto gap-12" id="explore">
         <div className="w-1/2 h-[500px] bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/X5BWooeO4Cw')] bg-gray-400 rounded-xl">
           <div className="text-center mx-auto w-3/5 text-4xl font-bold mt-24">
             Explore Our Exciting Listings
@@ -375,6 +375,9 @@ function LandingPage() {
           </div>
         </div>
       </section>
+
+
+
     </>
   );
 }

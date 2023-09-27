@@ -1,7 +1,13 @@
 import React from 'react'
+import Contact from './Contact'
 
 function DFooter() {
   return (
+    <>
+
+    
+    <Contact/>
+
     <div class="mb-4 md:my-8 mx-auto md:px-6 mt-24">
   {/* <!-- Section: Design Block --> */}
   <section class="text-center md:text-left">
@@ -83,6 +89,7 @@ function DFooter() {
   </section>
   {/* <!-- Section: Design Block --> */}
 </div>
+</>
   )
 }
 
