@@ -18,6 +18,10 @@ function ProductCard({ ad }) {
   const id = ad._id;
   const navigate = useNavigate()
   // console.log(loggedUser._id)
+  const handleClick = (id) => {
+    
+    navigate(`/getads/${id}`)
+  }
   const handleDelete = async (id,e) => {
     e.preventDefault()
     console.log(id);
@@ -30,7 +34,7 @@ function ProductCard({ ad }) {
     navigate(`/update/${id}`);
   };
   return (
-    <div class="p-4 md:w-1/3">
+    <div class="p-4 md:w-1/3"  onClick={()=>handleClick(id)}>
       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <img
           class="lg:h-48 md:h-36 w-full object-cover object-center"

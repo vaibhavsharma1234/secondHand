@@ -53,11 +53,15 @@ export default function Comments() {
   const handleChange = (e) => {
     const name = user.data.fullname
     const email = user.data.email
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+const formattedDate = today.toLocaleDateString(undefined, options);
     setComment({
       ...comment,
       name: name,
       postId: id,
       email: email,
+      date:formattedDate,
       comments: e.target.value,
     })
   }
@@ -97,13 +101,7 @@ export default function Comments() {
         </div>
       )}
 
-      {/* <div>
-        {comments &&
-          comments.length > 0 &&
-          comments.map((comment) => {
-            return <Comment comment={comment} setTogle={setTogle} />
-          })}
-      </div> */}
+    
       <div className='grid grid-cols-1  md:grid-cols-2 gap-4 w-[100%]  mt-2 '  >
         {
           comments && comments.length>0 && 

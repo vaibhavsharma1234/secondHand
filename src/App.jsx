@@ -21,14 +21,15 @@ export default function App() {
           <Routes>
             <Route path='/landing' element={<LandingPage/>}/>
             <Route path='/product' element={<ProductPage/>}/>
-            <Route path='/product/details' element={<ProductDetails/>}/>
+            {/* <Route path='/product/details' element={<ProductDetails/>}/> */}
+            <Route path='/product/details/:id' element={<ProductDetails/>}/>
             <Route path="/" element={<Home/>} />
             <Route path="/" element={<Home />} />
             <Route path="/otp" element={<Otp />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/postad" element={<Postad />} />
-            <Route path="/getads/:id" element={<Item />} />
+            <Route path="/getads/:id" element={<ProductDetails />} />
             <Route path="/myads" element={<Myads />} />
             <Route path="/update/:id" element={<Updatead />} />
           </Routes>

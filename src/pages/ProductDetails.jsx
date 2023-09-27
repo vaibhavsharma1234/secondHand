@@ -1,7 +1,71 @@
 import React from "react";
 import DComments from "../Components/DComments";
-
+import { useParams } from "react-router-dom";
+import { baseUrl } from "../config/api";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 function ProductDetails() {
+  const navigate = useNavigate()
+  const params = useParams();
+  console.log(params);
+  const { id } = params;
+  const loggedUser = JSON.parse(sessionStorage.getItem("user"));
+  // console.log('hello')
+  const [user, setUser] = useState("");
+  // console.log(loggedUser.email)
+  console.log("logged user", loggedUser);
+  console.log("user", user);
+
+  const [singlePost, setSinglePost] = useState({
+    title: "",
+    description: "",
+    brand: "",
+    location: "",
+    category: "",
+    price: null,
+    images: [],
+    image1: "",
+  });
+  const handleDelete = async (id) => {
+    console.log(id)
+    axios.delete(`${baseUrl}/api/delete/${id}`).then(() => {
+      //  window.location.reload(false)
+      navigate('/')
+    })
+  }
+  const handleUpdate = async (id) => {
+    navigate(`/update/${id}`)
+  }
+
+  // let user = ''
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios.get(`${baseUrl}/api/getads/${id}`).then((res) => {
+        // console.log(res.data.images)
+        setSinglePost(res.data);
+        console.log(res.data);
+        setUser(res.data.user);
+        // console.log('hello')
+        // console.log(user.email)
+
+        // setImages(res.data.images);
+        console.log(res.data.images);
+      });
+    };
+    fetchData();
+  }, []);
+  
+  const {
+    title,
+    description,
+    brand,
+    location,
+    category,
+    price,
+    images,
+    image1,
+  } = singlePost;
   return (
     <>
       <section class="text-gray-600 body-font overflow-hidden">
@@ -10,14 +74,14 @@ function ProductDetails() {
             <img
               alt="ecommerce"
               class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-              src="https://dummyimage.com/300x300"
+              src={image1}
             />
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 class="text-sm title-font text-gray-500 tracking-widest">
-                BRAND NAME
+                {brand}
               </h2>
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-                The Catcher in the Rye
+                {title}
               </h1>
               <div class="flex mb-4">
                 <span class="flex items-center">
@@ -117,26 +181,27 @@ function ProductDetails() {
                   </a>
                 </span>
               </div>
-              <p class="leading-relaxed">
-                Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-                sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
-                juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
-                seitan poutine tumeric. Gastropub blue bottle austin listicle
-                pour-over, neutra jean shorts keytar banjo tattooed umami
-                cardigan.
-              </p>
+              <p class="leading-relaxed">{description}</p>
+              <p class="leading-relaxed">location {location}</p>
+
+              <p class="leading-relaxed">category {category}</p>
+
               <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
               <div class="flex">
                 <span class="title-font font-medium text-2xl text-gray-900">
-                  $58.00
+                  {price}
                 </span>
-                <button class="flex ml-auto mr-6">
-                  <i class="fa-solid fa-trash text-2xl hover:text-red-500"></i>
-                </button>
-                <button class="flex">
-                  <i class="fa-solid fa-pen-to-square text-2xl hover:text-blue-500"></i>
-                </button>
-
+                { loggedUser&&loggedUser._id === user._id && (
+                  <>
+                    {" "}
+                    <button class="flex ml-auto mr-6" onClick={()=>handleDelete(id)}>
+                      <i class="fa-solid fa-trash text-2xl hover:text-red-500"></i>
+                    </button>
+                    <button class="flex" onClick={()=>handleUpdate(id)}>
+                      <i class="fa-solid fa-pen-to-square text-2xl hover:text-blue-500"></i>
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
