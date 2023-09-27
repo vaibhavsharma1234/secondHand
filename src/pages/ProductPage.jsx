@@ -137,7 +137,7 @@ function ProductPage() {
             ))}
           </nav>
           <input  value={input || ''}
-            onChange={(e) => setInput(e.target.value)} className="px-2 py-1 border-[1px] rounded-lg mr-2" placeholder="Search..."/>
+            onChange={(e) => setInput(e.target.value)} className="px-2 py-1 w-full md:w-[25vw] border-[1px] rounded-lg mr-2" placeholder="Search..."/>
         </div>
       </header>
       <section class="text-gray-600 body-font">

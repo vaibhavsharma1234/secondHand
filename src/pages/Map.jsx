@@ -16,4 +16,4 @@ function DefaultMap({lat,long}) {
   );
 }
 
-export default Map;
+export default DefaultMap;

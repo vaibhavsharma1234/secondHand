@@ -53,7 +53,7 @@ function Contact() {
 
   return (
     <>
-<div class="container mx-auto md:px-6">
+<div class="container mx-auto md:px-6 w-10/12">
   {/* <!-- Section: Design Block --> */}
   <section>
     <div class="flex flex-wrap">

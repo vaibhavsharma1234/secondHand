@@ -20,7 +20,7 @@ function DNavbar() {
  
   
   return (
-    <div className="flex bg-blue-900 justify-between w-full items-center px-24 mx-auto py-2">
+    <div className="flex bg-blue-900 justify-evenly md:justify-between w-full items-center px-24 mx-auto py-2">
       <div onClick={handleClick} className="font-semibold cursor-pointer text-xl md:text-2xl text-white">SecondHand</div>
       <div className="flex gap-8 text-base font-medium text-white">
       <ToastContainer />
