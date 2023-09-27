@@ -9,13 +9,19 @@ import Item from './Components/Item'
 import DataProvider from './context/DataContext'
 import Myads from './Components/Myads'
 import Updatead from './Components/UpdateAd'
+import LandingPage from './pages/LandingPage'
+import ProductPage from './pages/ProductPage'
+import ProductDetails from './pages/ProductDetails'
 export default function App() {
   return (
     <>
       <DataProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path='/landing' element={<LandingPage/>}/>
+            <Route path='/product' element={<ProductPage/>}/>
+            <Route path='/product/details' element={<ProductDetails/>}/>
+            <Route path="/" element={<Home/>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/postad" element={<Postad />} />
