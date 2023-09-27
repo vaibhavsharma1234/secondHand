@@ -3,6 +3,8 @@ import DComments from "../Components/DComments";
 import { useParams } from "react-router-dom";
 import { baseUrl } from "../config/api";
 import { useNavigate } from "react-router-dom";
+
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 function ProductDetails() {
@@ -207,6 +209,7 @@ function ProductDetails() {
           </div>
         </div>
       </section>
+      
       <DComments />
     </>
   );
