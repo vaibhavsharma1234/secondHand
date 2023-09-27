@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/solid'
 import axios from "axios";
 import { baseUrl } from "../config/api";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 function ProductCard({ ad }) {
   const loggedUser = JSON.parse(sessionStorage.getItem("user"));
@@ -19,14 +20,18 @@ function ProductCard({ ad }) {
   const navigate = useNavigate()
   // console.log(loggedUser._id)
   const handleClick = (id) => {
-    
-    navigate(`/getads/${id}`)
+    if(!isDeleted){
+      navigate(`/getads/${id}`)
+    }
+   
   }
+  const [isDeleted,setIsDeleted]=useState(false)
   const handleDelete = async (id,e) => {
     e.preventDefault()
     console.log(id);
     axios.delete(`${baseUrl}/api/delete/${id}`).then(() => {
       window.location.reload(false);
+      setIsDeleted(true)
       // navigate("/");
     });
   };
@@ -34,9 +39,10 @@ function ProductCard({ ad }) {
     navigate(`/update/${id}`);
   };
   return (
-    <div class="p-4 md:w-1/3"  onClick={()=>handleClick(id)}>
+    <div class="p-4 md:w-1/3"  >
       <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <img
+        onClick={()=>handleClick(id)}
           class="lg:h-48 md:h-36 w-full object-cover object-center"
           src={ad.image1}
           alt="blog"

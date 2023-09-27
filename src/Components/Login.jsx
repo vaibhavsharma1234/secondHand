@@ -10,6 +10,8 @@ import {
   
 } from '@material-tailwind/react'
 import { baseUrl } from '../config/api'
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -21,6 +23,13 @@ export default function Login() {
     const data = {
       email,
       password,
+    }
+    if( email && password){
+
+    
+     
+    }else{
+      toast("fill all details")
     }
     // sent the data to the backend
     axios.post(`${baseUrl}/api/auth/login`, data).then((res) => {
@@ -36,6 +45,7 @@ export default function Login() {
         // logout ke time clear this
         setEmail('')
         setPassword('')
+
         navigate('/')
       }
 
@@ -54,6 +64,7 @@ export default function Login() {
         <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
           <span>Go Back</span>
         </Button>
+        <ToastContainer/>
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">
             Sign in

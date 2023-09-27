@@ -25,6 +25,9 @@ function ProductPage() {
   const { ads, setAds } = useContext(DataContext)
   const [category, setCategory] = useState('ALL')
   const { result, setResult } = useContext(DataContext)
+  // search
+  const { input, setInput } = useContext(DataContext)
+
   let first
   useEffect(() => {
     const fetchData = async () => {
@@ -133,14 +136,21 @@ function ProductPage() {
               </a>
             ))}
           </nav>
-          <input className="px-2 py-1 border-[1px] rounded-lg mr-2" placeholder="Search..."/>
+          <input  value={input || ''}
+            onChange={(e) => setInput(e.target.value)} className="px-2 py-1 border-[1px] rounded-lg mr-2" placeholder="Search..."/>
         </div>
       </header>
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -m-4">
           {
-            result.map((item,index)=>{
+            result.filter((post) => {
+              if (input === '') {
+                return post
+              } else if (post.title.toLowerCase().includes(input.toLowerCase())) {
+                return post
+              }
+            }).map((item,index)=>{
               return  <ProductCard key={index} ad={item} />
             })
           }
