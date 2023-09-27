@@ -16,16 +16,7 @@ import Categories1 from './Categories1'
 import { DataContext } from '../context/DataContext'
 import { useContext } from 'react'
 const Home = () => {
-  // const navigate = useNavigate()
-  // const user = JSON.parse(sessionStorage.getItem('user'))
-  // const logout = () => {
-  //   sessionStorage.clear()
-
-  //   navigate('/')
-  // }
-  // useEffect(() => {
-  //   logout()
-  // }, [user])
+ 
   const { ads, setAds } = useContext(DataContext)
   const [category, setCategory] = useState('ALL')
   const { result, setResult } = useContext(DataContext)

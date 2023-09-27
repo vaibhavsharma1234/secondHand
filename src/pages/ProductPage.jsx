@@ -25,17 +25,6 @@ function ProductPage() {
   const [category, setCategory] = useState('ALL')
   const { result, setResult } = useContext(DataContext)
   let first
-  const handleClick = (name) => {
-    const updatedNavigation = navigation.map((item) => {
-      return {
-        ...item,
-        current: item.name === name,
-      };
-    });
-    setNavigation(updatedNavigation);
-    filterItems(name);
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -57,6 +46,45 @@ function ProductPage() {
     fetchData()
   }, [])
 
+  const filterItems = (id) => {
+    console.log(id)
+    if (id === 'ALL') {
+      const newItems = ads.filter((item) => item.category !== id)
+      setResult(() => {
+        return newItems
+      })
+      console.log('hello from all')
+      console.log(result)
+      return
+    }
+    const newItems = ads.filter((item) => item.category === id)
+    console.log('hello from here')
+    
+    // setAds(newItems)
+
+    setResult(() => {
+      return newItems
+    })
+    console.log(result)
+    
+    // console.log(ads)
+
+    // setCategory(id)
+  }
+  const handleClick = (name) => {
+    const updatedNavigation = navigation.map((item) => {
+      return {
+        ...item,
+        current: item.name === name,
+      };
+    });
+    setNavigation(updatedNavigation);
+    filterItems(name);
+  };
+
+  // filter
+
+ 
 
 
 
@@ -122,11 +150,15 @@ function ProductPage() {
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -m-4">
           {
-            ads.map((item,index)=>{
+            result.map((item,index)=>{
               return  <ProductCard key={index} ad={item} />
             })
           }
-           
+           {
+            result.length===0 && (
+              <h1> no data available</h1>
+            )
+           }
           </div>
         </div>
       </section>
