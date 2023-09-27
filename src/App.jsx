@@ -9,6 +9,7 @@ import Item from './Components/Item'
 import DataProvider from './context/DataContext'
 import Myads from './Components/Myads'
 import Updatead from './Components/UpdateAd'
+import Otp from './Components/Otp'
 export default function App() {
   return (
     <>
@@ -16,6 +17,7 @@ export default function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/otp" element={<Otp />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/postad" element={<Postad />} />

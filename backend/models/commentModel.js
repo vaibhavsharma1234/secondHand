@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
+const {replySchema}=require('./replyModel')
 const commentSchema = new Schema({
   name: {
     type: String,
@@ -21,6 +22,7 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
+  replies: [replySchema]
 })
 
 module.exports = mongoose.model('comment', commentSchema)
