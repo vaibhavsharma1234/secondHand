@@ -5,52 +5,94 @@ import {
   Button,
   Typography,
   Tooltip,
-} from '@material-tailwind/react'
+} from "@material-tailwind/react";
 // import { ArrowUTurnIcon } from 'hero'
-import { ArrowUturnLeftIcon } from '@heroicons/react/24/solid'
+import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 // import {  } from '@material-tailwind/react'
-import axios from 'axios'
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import axios from "axios";
+import { useState,useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { DataContext } from "../context/DataContext";
 // import Header from './Header'
-import { baseUrl } from '../config/api'
+import { baseUrl } from "../config/api";
 export default function Signup() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [key, setKey] = useState(0)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [key, setKey] = useState(0);
+  const [optSection, setOtpSection] = useState(false);
+  const { signup,setSignUp}=useContext(DataContext)
+  const [otp,setOtp]=useState("")
   // const baseUrl = 'http://localhost:8000'
-  const clearClickHandler = () => setKey((k) => k + 1)
-  const navigate = useNavigate()
+  const clearClickHandler = () => setKey((k) => k + 1);
+  const navigate = useNavigate();
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // console.log('hello')
-    console.log(name, email, password)
-    const data = {
-      fullname: name,
-      email,
-      password,
-    }
-    // sent the data to the backend now
-    axios.post(`${baseUrl}/api/auth/signup`, data).then((res) => {
-      // console.log(res)
-      const { success } = res.data
-      console.log(success)
-      // if(res)
-      if (success) {
-        setName('')
-        setEmail('')
-        setPassword('')
-        clearClickHandler()
-        navigate('/login')
-        // navigate to  the login page
-      } else {
-        alert('error hai vapas try kro from signup')
+    
+    if(signup){
+      alert("helloooo")
+      console.log(name, email, password);
+      const data = {
+        fullname: name,
+        email,
+        password,
+      };
+      // sent the data to the backend now
+      axios.post(`${baseUrl}/api/auth/signup?otp=${otp}`, data).then((res) => {
+        // console.log(res)
+        const { success } = res.data;
+       
+        console.log(success);
+        // if(res)
+        if (success) {
+          let mailcont='welcome to the secondhand'
+          // send mail to the user 
+          const encodedEmail = (email);
+          const encodedName = (name);
+          const encodedMailCont = (mailcont);
+          console.log(encodedEmail, encodedName, encodedMailCont);
+          axios.post(`${baseUrl}/api/postmail/?email=${encodedEmail}&name=${encodedName}&content=${encodedMailCont}`).then((res) => {
+              console.log(res);
+          });
+          setName("");
+          setEmail("");
+          setPassword("");
+          clearClickHandler();
+          navigate("/login");
+          setSignUp(false)
+          // navigate to  the login page
+        } else {
+          alert("error hai vapas try kro from signup");
+        }
+      });
+    }else{
+      // navigate('/otp')
+      // call the send otp function 
+      if(name && email && password){
+
+        alert("call the send otp function")
+        axios.post(`${baseUrl}/api/otp/generate/?email=${email}&name=${name}`)
+        setSignUp(true)
+      }else{
+        alert("fill all details")
       }
-    })
-  }
+    
+    }
+
+  };
   const handleClickBack = () => {
-    navigate('/')
+    navigate("/");
+  };
+
+  const handleOtpSection =()=>{
+    if(name && email && password){
+      setOtpSection(true)
+      
+      
+    }else{
+      alert("fill all details")
+    }
   }
   return (
     <>
@@ -64,8 +106,11 @@ export default function Signup() {
 
           </span>
         </Tooltip> */}
-        <Button   onClick={handleClickBack} className="p-4 m-4 hover:bg-black-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-        <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
+        <Button
+          onClick={handleClickBack}
+          className="p-4 m-4 hover:bg-black-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+        >
+          <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
           <span>Go Back</span>
         </Button>
       </div>
@@ -120,13 +165,33 @@ export default function Signup() {
                   </a>
                 </Typography>
               }
-              containerProps={{ className: '-ml-2.5' }}
+              containerProps={{ className: "-ml-2.5" }}
             />
-            <Button className="mt-6" type="submit" fullWidth>
-              Register
+            {optSection && (
+              <div>
+                <label
+                  htmlFor="number"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  OTP
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="number"
+                    value={otp}
+                    onChange={(e)=>setOtp(e.target.value)}
+                    className={`block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`}
+                  />
+                </div>
+                <Button type="submit" disabled={!optSection} className="mt-6">Register</Button>
+              </div>
+            )}
+            <Button className="mt-6" type="submit" fullWidth onClick={handleOtpSection}>
+              Send Otp
             </Button>
+
             <Typography color="gray" className="mt-4 text-center font-normal">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link
                 to="/login"
                 className="font-medium text-blue-500 transition-colors hover:text-blue-700"
@@ -138,5 +203,5 @@ export default function Signup() {
         </Card>
       </div>
     </>
-  )
+  );
 }

@@ -12,6 +12,7 @@ import Updatead from './Components/UpdateAd'
 import LandingPage from './pages/LandingPage'
 import ProductPage from './pages/ProductPage'
 import ProductDetails from './pages/ProductDetails'
+import Otp from './Components/Otp'
 export default function App() {
   return (
     <>
@@ -22,6 +23,8 @@ export default function App() {
             <Route path='/product' element={<ProductPage/>}/>
             <Route path='/product/details' element={<ProductDetails/>}/>
             <Route path="/" element={<Home/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="/otp" element={<Otp />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/postad" element={<Postad />} />

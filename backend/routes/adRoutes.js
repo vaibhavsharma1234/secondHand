@@ -14,7 +14,12 @@ const {
   postComment,
   getComments,
   deleteComment,
+  postCommentReply,
+  deleteReply
+
 } = require('../controllers/adController')
+const {mailSend}=require('../controllers/mailController')
+const {generateOTP}=require('../controllers/otpController')
 router.post('/postad', authUser, upload, multerMiddleware, postAd)
 router.get('/getads', getAds)
 router.get('/getads/:id', getAd)
@@ -25,5 +30,10 @@ router.put('/update/:id', authUser, updateAd)
 router.post('/comment', authUser, postComment)
 router.post('/file/upload', upload1.single('file'), uploadImage)
 router.get('/comments/:id', getComments)
+router.post('/comments/:commentId/replies',postCommentReply)
 router.delete('/comment/delete/:id', authUser, deleteComment)
+router.delete('/comment/delete/replies/:commentId/:id',deleteReply)
+router.post('/otp/generate',generateOTP)
+// mail send
+router.post('/postmail',mailSend)
 module.exports = router

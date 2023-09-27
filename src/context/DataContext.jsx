@@ -11,6 +11,8 @@ const DataProvider = ({ children }) => {
   const [input, setInput] = useState('')
   const [ads, setAds] = useState([])
   const [imageval, setImageVal] = useState('')
+  const [comments, setComments] = useState([])
+  const [signup,setSignUp]=useState(false)
   return (
     // pass those in datacontext which u want globally excess
     // component ko wrap around
@@ -24,6 +26,8 @@ const DataProvider = ({ children }) => {
         setAds,
         imageval,
         setImageVal,
+        comments, setComments,
+        signup,setSignUp
       }}
     >
       {children}

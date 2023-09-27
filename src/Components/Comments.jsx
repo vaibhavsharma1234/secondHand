@@ -1,8 +1,9 @@
 import { Textarea, Button, IconButton } from '@material-tailwind/react'
 import { LinkIcon } from '@heroicons/react/24/outline'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { DataContext } from '../context/DataContext'
 import { baseUrl } from '../config/api'
 import Comment from './Comment'
 import { NewComment } from './NewComment'
@@ -18,7 +19,7 @@ export default function Comments() {
   }
   const user = JSON.parse(sessionStorage.getItem('user'))
   const [comment, setComment] = useState(initialValues)
-  const [comments, setComments] = useState([])
+  const {comments, setComments} = useContext(DataContext)
   const [togle, setTogle] = useState(false)
   useEffect(() => {
     let id1 = id
