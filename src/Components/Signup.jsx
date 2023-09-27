@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 // import Header from './Header'
 import { baseUrl } from "../config/api";
+import DNavbar from "../pages/DNavbar";
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -98,7 +99,7 @@ export default function Signup() {
 
   };
   const handleClickBack = () => {
-    navigate("/");
+    navigate("/product");
   };
 
   const handleOtpSection =()=>{
@@ -114,6 +115,7 @@ export default function Signup() {
   return (
     <>
       {/* <Header /> */}
+      <DNavbar/>
       <div>
         {/* <Tooltip content="go-back">
           <span
@@ -221,7 +223,7 @@ export default function Signup() {
           </form>
         </Card>
       </div> */}
-              <div className="w-full p-6 m-auto rounded-md h-screen  lg:max-w-xl">
+              <div className="w-full p-6 mt-28 mx-auto rounded-md h-screen  lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-blue-600 uppercase">
           Sign Up
           </h1>

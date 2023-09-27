@@ -1,18 +1,19 @@
-import { FileUpload } from './FileUpload'
-import { useState, useContext } from 'react'
-import { FileUpload1 } from './FileUpload1'
-import { baseUrl } from '../config/api'
-import { useNavigate } from 'react-router-dom'
-import { PlusCircleIcon } from '@heroicons/react/24/solid'
-import { DataContext } from '../context/DataContext'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { FileUpload } from "./FileUpload";
+import { useState, useContext } from "react";
+import { FileUpload1 } from "./FileUpload1";
+import { baseUrl } from "../config/api";
+import { useNavigate } from "react-router-dom";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { DataContext } from "../context/DataContext";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DNavbar from "../pages/DNavbar";
 const Postad = () => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
-let currentLatitude
-let currentLongitude
+  let currentLatitude;
+  let currentLongitude;
   // const loca=(e) => {
   //   // Check if the Geolocation API is available in the browser
   //   e.preventDefault()
@@ -21,13 +22,12 @@ let currentLongitude
   //        currentLatitude = position.coords.latitude;
   //        currentLongitude = position.coords.longitude;
   //       console.log(currentLatitude, currentLongitude);
-        
-        
+
   //     });
   //   } else {
   //     console.error('Geolocation is not available in this browser.');
   //   }
-    
+
   // };
   const getLocData = () => {
     return new Promise((resolve, reject) => {
@@ -35,9 +35,9 @@ let currentLongitude
         navigator.geolocation.getCurrentPosition((position) => {
           currentLatitude = position.coords.latitude;
           currentLongitude = position.coords.longitude;
-          console.log(currentLatitude , currentLongitude);
-          setLatitude(currentLatitude)
-          setLongitude(currentLongitude)
+          console.log(currentLatitude, currentLongitude);
+          setLatitude(currentLatitude);
+          setLongitude(currentLongitude);
           resolve();
         });
       } else {
@@ -48,91 +48,92 @@ let currentLongitude
   };
 
   const [allValues, setAllValues] = useState({
-    title: '',
-    description: '',
-    brand: '',
-    location: '',
-    category: '',
+    title: "",
+    description: "",
+    brand: "",
+    location: "",
+    category: "",
     price: null,
     images: [],
-    image1: '',
-    lat:'',
-    long:''
-  })
-  
-  const [file, setFile] = useState('')
-  const navigate = useNavigate()
-  const handleChange = (e) => {
-    setAllValues({ ...allValues, [e.target.name]: e.target.value })
-    
-    console.log(allValues)
-  }
- 
-  const handleDropDown = (e) => {
-    setAllValues({ ...allValues, category: e.target.value })
-  }
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+    image1: "",
+    lat: "",
+    long: "",
+  });
 
-    console.log(allValues)
-    console.log("lat",latitude)
-    console.log("long",longitude)
+  const [file, setFile] = useState("");
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    setAllValues({ ...allValues, [e.target.name]: e.target.value });
+
+    console.log(allValues);
+  };
+
+  const handleDropDown = (e) => {
+    setAllValues({ ...allValues, category: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log(allValues);
+    console.log("lat", latitude);
+    console.log("long", longitude);
     // setLatitude(currentLatitude)
     //     setLongitude(currentLongitude)
-    const formData = new FormData()
-    
-    formData.append('title', allValues.title)
-    formData.append('brand', allValues.brand)
-    formData.append('category', allValues.category)
+    const formData = new FormData();
 
-    formData.append('description', allValues.description)
-    formData.append('location', allValues.location)
-    formData.append('price', allValues.price)
-    formData.append('image1', file)
-    formData.append('lat', latitude)
-    formData.append('long', longitude)
+    formData.append("title", allValues.title);
+    formData.append("brand", allValues.brand);
+    formData.append("category", allValues.category);
+
+    formData.append("description", allValues.description);
+    formData.append("location", allValues.location);
+    formData.append("price", allValues.price);
+    formData.append("image1", file);
+    formData.append("lat", latitude);
+    formData.append("long", longitude);
     // alert(formData)
-    console.log(formData,"form")
+    console.log(formData, "form");
     // make the api call
-    const token = JSON.parse(sessionStorage.getItem('token'))
+    const token = JSON.parse(sessionStorage.getItem("token"));
     const headers = {
       Authorization: `Bearer ${token}`,
-    }
-    axios.post(`${baseUrl}/api/postad`, formData, { headers }).then((res) => {
-      console.log(res,"hello")
-    }).then((res)=>{
-      setAllValues({
-        title: '',
-        description: '',
-        brand: '',
-        condition: '',
-        category: 'Mobile Phones',
-        price: null,
-        images: [],
-        location: '',
-        lat:'',
-        long:''
+    };
+    axios
+      .post(`${baseUrl}/api/postad`, formData, { headers })
+      .then((res) => {
+        console.log(res, "hello");
       })
-      toast("product added")
-      setTimeout(() => {
-        navigate('/product')
-      }, 5000);
-      
-  
-    })
-    .catch((error)=>{
-      toast("error",error)
-    })
-    
-   
-  
+      .then((res) => {
+        setAllValues({
+          title: "",
+          description: "",
+          brand: "",
+          condition: "",
+          category: "Mobile Phones",
+          price: null,
+          images: [],
+          location: "",
+          lat: "",
+          long: "",
+        });
+        toast("product added");
+        setTimeout(() => {
+          navigate("/product");
+        }, 5000);
+      })
+      .catch((error) => {
+        toast("error", error);
+      });
+
     // window.location.reload(false)
-  }
+  };
   return (
+  <>
+  <DNavbar/>
     <div>
       <section className="bg-white dark:bg-gray-900">
-        <ToastContainer/>
+        <ToastContainer />
         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             Add a new product
@@ -222,7 +223,7 @@ let currentLongitude
                   id="location"
                   onChange={handleChange}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder={''}
+                  placeholder={""}
                   required
                 />
               </div>
@@ -240,7 +241,7 @@ let currentLongitude
                   rows={8}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Your description here"
-                  defaultValue={''}
+                  defaultValue={""}
                 />
               </div>
 
@@ -250,9 +251,14 @@ let currentLongitude
                 file={file}
                 setFile={setFile}
               />
-              <div>
-              <p className='p-2  rounded bg-black text-white' onClick={getLocData }>get my location </p>
-              <p>latitude:{latitude} & longitude :{longitude}</p>
+              <div className="flex flex-col justify-end ml-auto">
+                <span className="rounded-full w-fit px-4 py-2 text-center cursor-pointer bg-black text-white text-md" onClick={getLocData}>
+                  <i class="fa-solid fa-location-crosshairs font-thin"></i> Get my
+                  location{" "}
+                </span>
+                <span className="text-xs font-medium mx-auto">
+                  Latitude:{latitude} & Longitude :{longitude}
+                </span>
               </div>
             </div>
             <button
@@ -265,6 +271,7 @@ let currentLongitude
         </div>
       </section>
     </div>
-  )
-}
-export default Postad
+  </>
+  );
+};
+export default Postad;

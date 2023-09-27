@@ -10,10 +10,11 @@ function DefaultMap({lat,long}) {
   
 
   return (
-    <div>
-      <div id="map" style={{ width: '100%', height: '100vh' }}></div>
+    <div className='w-3/4 mx-auto'>
+    <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">Product Location</h2>
+      <div id="map" className='h-[400px]'></div>
     </div>
   );
 }
 
-export default Map;
+export default DefaultMap;

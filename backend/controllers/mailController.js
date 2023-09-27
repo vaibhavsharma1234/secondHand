@@ -21,7 +21,7 @@ const sendMail = (receiverEmailAddress, content, userName, subject) => {
     let MailGenerator = new Mailgen({
         theme: "default",
         product : {
-            name: "CropConnect",
+            name: "SecondHand",
             link : 'https://mailgen.js/'
         }
     })

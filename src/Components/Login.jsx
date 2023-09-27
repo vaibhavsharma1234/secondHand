@@ -13,6 +13,7 @@ import {
 import { baseUrl } from '../config/api'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import DNavbar from '../pages/DNavbar'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -54,11 +55,13 @@ export default function Login() {
     })
   }
   const handleClick = () => {
-    navigate('/')
+    navigate('/product')
   }
   return (
     <>
       {/* <Header /> */}
+
+      <DNavbar/>
 
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <Button   onClick={handleClick} className="p-4 m-4 w-[8vw] hover:bg-black-400  font-bold py-2 px-4 rounded inline-flex items-center">
