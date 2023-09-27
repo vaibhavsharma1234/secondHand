@@ -9,6 +9,44 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 const Postad = () => {
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+let currentLatitude
+let currentLongitude
+  // const loca=(e) => {
+  //   // Check if the Geolocation API is available in the browser
+  //   e.preventDefault()
+  //   if ('geolocation' in navigator) {
+  //     navigator.geolocation.getCurrentPosition(async function (position) {
+  //        currentLatitude = position.coords.latitude;
+  //        currentLongitude = position.coords.longitude;
+  //       console.log(currentLatitude, currentLongitude);
+        
+        
+  //     });
+  //   } else {
+  //     console.error('Geolocation is not available in this browser.');
+  //   }
+    
+  // };
+  const getLocData = () => {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          currentLatitude = position.coords.latitude;
+          currentLongitude = position.coords.longitude;
+          console.log(currentLatitude , currentLongitude);
+          setLatitude(currentLatitude)
+          setLongitude(currentLongitude)
+          resolve();
+        });
+      } else {
+        alert("Geolocation is not supported by this browser.");
+        reject();
+      }
+    });
+  };
+
   const [allValues, setAllValues] = useState({
     title: '',
     description: '',
@@ -18,12 +56,15 @@ const Postad = () => {
     price: null,
     images: [],
     image1: '',
+    lat:'',
+    long:''
   })
   
   const [file, setFile] = useState('')
   const navigate = useNavigate()
   const handleChange = (e) => {
     setAllValues({ ...allValues, [e.target.name]: e.target.value })
+    
     console.log(allValues)
   }
  
@@ -35,6 +76,10 @@ const Postad = () => {
     e.preventDefault()
 
     console.log(allValues)
+    console.log("lat",latitude)
+    console.log("long",longitude)
+    // setLatitude(currentLatitude)
+    //     setLongitude(currentLongitude)
     const formData = new FormData()
     
     formData.append('title', allValues.title)
@@ -45,8 +90,10 @@ const Postad = () => {
     formData.append('location', allValues.location)
     formData.append('price', allValues.price)
     formData.append('image1', file)
+    formData.append('lat', latitude)
+    formData.append('long', longitude)
     // alert(formData)
-    console.log(formData)
+    console.log(formData,"form")
     // make the api call
     const token = JSON.parse(sessionStorage.getItem('token'))
     const headers = {
@@ -64,12 +111,12 @@ const Postad = () => {
         price: null,
         images: [],
         location: '',
-        latitude:'',
-        longitude:''
+        lat:'',
+        long:''
       })
       toast("product added")
       setTimeout(() => {
-        navigate('/')
+        navigate('/product')
       }, 5000);
       
   
@@ -203,22 +250,10 @@ const Postad = () => {
                 file={file}
                 setFile={setFile}
               />
-              {/* <div>
-                <label htmlFor="fileInput">
-                  <PlusCircleIcon
-                    fontSize="small"
-                    className="w-10"
-                    color="action"
-                  />
-                </label>
-                <input
-                  type="file"
-                  id="fileInput"
-                  style={{ display: 'none' }}
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-                {file && <h2>file uploaded</h2>}
-              </div> */}
+              <div>
+              <p className='p-2  rounded bg-black text-white' onClick={getLocData }>get my location </p>
+              <p>latitude:{latitude} & longitude :{longitude}</p>
+              </div>
             </div>
             <button
               type="submit"

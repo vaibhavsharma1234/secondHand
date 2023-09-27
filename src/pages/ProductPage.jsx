@@ -156,7 +156,9 @@ function ProductPage() {
           }
            {
             result.length===0 && (
+              <div className="h-screen text-center text-4xl">
               <h1> no data available</h1>
+              </div>
             )
            }
           </div>
