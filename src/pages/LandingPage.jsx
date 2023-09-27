@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link, animateScroll as scroll, scroller } from 'react-scroll';
-
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
   const [tab, setTab] = useState(2);
-
+  const naviagte = useNavigate()
+ const handleNavigate=()=>{
+naviagte('/product')
+ }
+ const handleNavigateNew=()=>{
+  naviagte('/signup')
+ }
   return (
     <>
       <section className="relative mb-32">
@@ -15,7 +21,7 @@ function LandingPage() {
           <div className="w-1/4 flex flex-col pl-28 gap-8 h-full text-white">
             <div className="text-sm">Always in Control</div>
             <div className="w-full">
-              <button className="text-base font-semibold rounded-full text-black bg-white px-6 py-2">
+              <button onClick={handleNavigate} className="text-base font-semibold rounded-full text-black bg-white px-6 py-2">
                 Explore products
               </button>
             </div>
@@ -314,7 +320,8 @@ function LandingPage() {
                 <li>Enjoy a more sustainable and affordable college life.</li>
               </ul>
             </div>
-            <div className="h-72 w-1/2 bg-amber-700"></div>
+            <div className="h-72 w-1/2 bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/tVkdGtEe2C4')]"></div>
+            {/* https://unsplash.com/photos/red-letters-neon-light-49uySSA678U */}
           </div>
         </div>
         <div className="flex flex-row py-8 border-t-2">
@@ -331,7 +338,8 @@ function LandingPage() {
                 <li>Easy listing process.</li>
               </ul>
             </div>
-            <div className="h-72 w-1/2 bg-green-700"></div>
+            <div className="h-72 w-1/2 bg-green-700 bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/I5lR4R0CM6g')]"></div>
+            {/* I5lR4R0CM6g */}
           </div>
         </div>
         <div className="flex flex-row py-8 border-t-2">
@@ -348,7 +356,8 @@ function LandingPage() {
                 <li>Easy listing process.</li>
               </ul>
             </div>
-            <div className="h-72 w-1/2 bg-blue-700"></div>
+            <div className="h-72 w-1/2 bg-green-700 bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/ZbJfBi8H7KM')]"></div>
+            {/* Uh5GWNUGgGY */}
           </div>
         </div>
       </section>
@@ -359,17 +368,18 @@ function LandingPage() {
             Explore Our Exciting Listings
           </div>
           <div className="w-full flex my-32 justify-center">
-            <button className="bg-white px-8 py-2 text-base mx-auto rounded-full font-bold">
+            <button onClick={handleNavigate} className="bg-white px-8 py-2 text-base mx-auto rounded-full font-bold">
               Browse Products
             </button>
           </div>
         </div>
         <div className="w-1/2 h-[500px] bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/h8nxGssjQXs')] bg-black rounded-xl">
-          <div className="text-center text-white mx-auto w-3/5 text-4xl font-bold mt-24">
+          <div  className="text-center text-white mx-auto w-3/5 text-4xl font-bold mt-24">
+            
             Join SecondHand Community Today
           </div>
           <div className="w-full flex my-32 justify-center">
-            <button className="bg-white px-8 py-2 text-base mx-auto rounded-full font-bold">
+            <button onClick={handleNavigateNew} className="bg-white px-8 py-2 text-base mx-auto rounded-full font-bold">
               Sign Up Now
             </button>
           </div>

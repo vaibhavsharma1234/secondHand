@@ -6,6 +6,8 @@ import { DataContext } from "../context/DataContext";
 import { baseUrl } from "../config/api";
 import Dcomment from "./Dcomment";
 import Dreply from "./Dreply";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 function DComments() {
   const params = useParams();
   const { id } = params;
@@ -64,6 +66,10 @@ function DComments() {
     // make the call for the new comment
     // add comment
     e.preventDefault();
+    if(!user){
+      toast("login first")
+      return
+    }
     const token = JSON.parse(sessionStorage.getItem("token"));
     const headers = {
       Authorization: `Bearer ${token}`,
@@ -77,6 +83,7 @@ function DComments() {
   };
   return (
     <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
+      <ToastContainer/>
       <div class="w-3/4 mx-auto px-4">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">

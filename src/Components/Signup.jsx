@@ -10,7 +10,7 @@ import {
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 // import {  } from '@material-tailwind/react'
 import axios from "axios";
-import { useState,useContext } from "react";
+import { useState,useContext ,useEffect} from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { DataContext } from "../context/DataContext";
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,6 +26,15 @@ export default function Signup() {
   const { signup,setSignUp}=useContext(DataContext)
   const [otp,setOtp]=useState("")
   // const baseUrl = 'http://localhost:8000'
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts (page loads)
+    window.scrollTo(0, 0);
+
+    // Optionally, you can also scroll to the top when the component unmounts (page changes)
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
   const clearClickHandler = () => setKey((k) => k + 1);
   const navigate = useNavigate();
   const handleClick = (e) => {
@@ -118,13 +127,13 @@ export default function Signup() {
 
         <Button
           onClick={handleClickBack}
-          className="p-4 m-4 hover:bg-black-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+          className="p-4 m-4 hover:bg-black-400 font-bold py-2 px-4 rounded inline-flex items-center"
         >
           <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
           <span>Go Back</span>
         </Button>
       </div>
-      <div className="flex items-center justify-center h-screen">
+      {/* <div className="flex items-center justify-center  w-full p-6 m-auto rounded-md shadow-xl lg:max-w-xl">
         <Card color="transparent" shadow={false}>
           <Typography variant="h4" color="blue-gray" className="text-center">
             Sign Up
@@ -211,7 +220,101 @@ export default function Signup() {
             </Typography>
           </form>
         </Card>
-      </div>
+      </div> */}
+              <div className="w-full p-6 m-auto rounded-md h-screen  lg:max-w-xl">
+          <h1 className="text-3xl font-semibold text-center text-blue-600 uppercase">
+          Sign Up
+          </h1>
+          <form className="mt-6"  onSubmit={handleClick}>
+          <div className="mb-2">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Name
+              </label>
+              <input
+                type="text"
+                value={name || ' '}
+                onChange={(e) => setName(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              />
+            </div>
+            <div className="mb-2">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email || ' '}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              />
+            </div>
+          
+            <div className="mb-2">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password || ''}
+                onChange={(e) => setPassword(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              />
+            </div>
+            {optSection && (
+              <div>
+                <label
+                  htmlFor="number"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  OTP
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="number"
+                    value={otp}
+                    onChange={(e)=>setOtp(e.target.value)}
+                    className={`block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`}
+                  />
+                </div>
+                <Button type="submit" disabled={!optSection} className="mt-6">Register</Button>
+              </div>
+            )}
+              <Button className="mt-6" type="submit" fullWidth onClick={handleOtpSection}>
+              Send Otp
+            </Button>
+          
+            
+          </form>
+          {/* <div className="relative flex items-center justify-center w-full mt-6 border border-t">
+            <div className="absolute px-5 bg-white">Or</div>
+          </div> */}
+          {/* <div className="flex mt-4 gap-x-2">
+            <button
+              type="button"
+              className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                className="w-5 h-5 fill-current"
+              >
+                <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
+              </svg>
+            </button>
+          </div> */}
+
+          <p className="mt-8 text-xs font-light text-center text-gray-700">
+            {' '}
+            Don't have an account?{' '}
+            <Link
+                to="/login"
+                className="font-medium text-blue-500 transition-colors hover:text-blue-700"
+              >
+                Sign In
+              </Link>
+          </p>
+          
+        </div>
     </>
   );
 }

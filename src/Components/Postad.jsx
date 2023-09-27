@@ -9,6 +9,8 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 const Postad = () => {
+  const [lat,setLat]=useState("")
+  const [long ,setLong]=useState("")
   const [allValues, setAllValues] = useState({
     title: '',
     description: '',
@@ -18,6 +20,8 @@ const Postad = () => {
     price: null,
     images: [],
     image1: '',
+    lat:'',
+    long:''
   })
   
   const [file, setFile] = useState('')
@@ -69,7 +73,7 @@ const Postad = () => {
       })
       toast("product added")
       setTimeout(() => {
-        navigate('/')
+        navigate('/product')
       }, 5000);
       
   

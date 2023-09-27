@@ -4,6 +4,8 @@ import { useState,useContext } from "react";
 import axios from "axios";
 import { baseUrl } from "../config/api";
 import { DataContext } from "../context/DataContext";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 function Dcomment({ comment,setTogle }) {
   const [newReply, setNewReply] = useState("");
   const user = JSON.parse(sessionStorage.getItem("user"));
@@ -18,6 +20,10 @@ function Dcomment({ comment,setTogle }) {
     setShowMoreReplies((prevState) => !prevState);
   };
   const submitReply = (commentId) => {
+    if(!user){
+        toast("login first")
+        return 
+    }
     console.log(newReply);
     console.log(commentId);
     // call to insert the reply
@@ -66,6 +72,7 @@ function Dcomment({ comment,setTogle }) {
   };
   return (
     <div>
+        <ToastContainer/>
       <article class="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
         <footer class="flex justify-between items-center mb-2">
           <div class="flex items-center">
