@@ -105,12 +105,16 @@ function DComments() {
             ></textarea>
           </div>
           <button
-            onClick={handleSubmit}
-            class="inline-flex items-center py-2.5 px-4 text-sm font-semibold text-center text-white bg-blue-700 rounded-lg dark:focus:ring-primary-900 hover:bg-primary-800"
+            onClick={(user)?handleSubmit:null} disabled={comment.comments===""}
+            class={`inline-flex items-center py-2.5 px-4 text-sm font-semibold text-center text-white ${(user)?"bg-blue-700":"bg-blue-400"} rounded-lg dark:focus:ring-primary-900 hover:bg-primary-800`}
           >
             Post comment
           </button>
-          <button class="inline-flex items-center py-2.5 px-4 text-red-600 text-sm font-semibold text-center rounded-lg hover:bg-primary-800">
+          <button 
+          onClick={(e)=>{
+            e.preventDefault();
+            setComment("")}}
+          class="inline-flex items-center py-2.5 px-4 text-red-600 text-sm font-semibold text-center rounded-lg hover:bg-primary-800">
             Cancel
           </button>
         </form>

@@ -67,6 +67,7 @@ function Dcomment({ comment,setTogle }) {
       .then((res) => {
         console.log(res);
         //   setComment(initialValues)
+        toast("deleted comment success")
         setTogle((prevState) => !prevState);
       });
   };
@@ -102,7 +103,10 @@ function Dcomment({ comment,setTogle }) {
         </footer>
         <p class="text-gray-500 dark:text-gray-400">{comment.comments}</p>
         {/* reply  */}
-        <div class="flex items-center mt-4 space-x-4">
+        <div>
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+          submitReply(id)}} class="flex items-center mt-4 space-x-4">
           <input
             class="px-2 w-full text-sm rounded-lg mr-2 text-gray-900 border-[1px] focus:outline-none focus:ring-0 py-2"
             placeholder="Write a reply..."
@@ -110,12 +114,13 @@ function Dcomment({ comment,setTogle }) {
             value={newReply}
             onChange={(e) => setNewReply(e.target.value)}
           />
-          <span
-            onClick={() => submitReply(id)}
-            className="inline-flex items-center py-2.5 px-4 text-sm font-semibold text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+          <button
+          type="submit"
+            className={`inline-flex items-center py-2.5 px-4 text-sm font-semibold text-center text-white ${(user)?"bg-blue-700":"bg-blue-400"} cursor-pointer rounded-lg dark:focus:ring-primary-900 hover:bg-primary-800`}
           >
             Reply
-          </span>
+          </button>
+          </form>
         </div>
       </article>
       {comment.replies .slice(0, showMoreReplies ? undefined : 2).map((reply) => (

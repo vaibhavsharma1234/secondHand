@@ -3,19 +3,21 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import axios from "axios";
 import { baseUrl } from "../config/api";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 function Dreply({reply, adminEmail,id}) {
     const userEmail=(JSON.parse(sessionStorage.getItem('user')))?.email
     // console.log(userEmail,adminEmail,reply.name)
     const user=(JSON.parse(sessionStorage.getItem('user')))
     const {comments,setComments}=useContext(DataContext)
     const removeReply=()=>{
-        alert("vaibhav")
         // console.log("comment id",id)
         // console.log("reply",reply)
         axios
             .delete(`${baseUrl}/api/comment/delete/replies/${id}/${reply._id}`)
             .then((res) => {
-                
                 console.log(res)
                 const updatedComments = comments.map(comment => {
                     if (comment._id === id) {
@@ -26,6 +28,7 @@ function Dreply({reply, adminEmail,id}) {
                   });
         
                   setComments(updatedComments);
+                  toast("Reply Deleted Successfully")
                 
             })
             .catch(error => console.log(error));
@@ -34,6 +37,7 @@ function Dreply({reply, adminEmail,id}) {
   return (
     <div>
       <article class="p-6 mb-3 ml-6 lg:ml-12 text-base bg-white rounded-lg dark:bg-gray-900">
+      <ToastContainer/>
         <footer class="flex justify-between items-center mb-2">
           <div class="flex items-center">
             <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
