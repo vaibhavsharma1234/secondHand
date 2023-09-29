@@ -88,14 +88,6 @@ function ProductPage() {
 
   // filter
 
- 
-
-
-
-
-
-
-  
 
   return (
     <>

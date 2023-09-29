@@ -227,7 +227,10 @@ export default function Signup() {
           <h1 className="text-3xl font-semibold text-center text-blue-600 uppercase">
           Sign Up
           </h1>
-          <form className="mt-6"  onSubmit={handleClick}>
+          <form className="mt-6"  onSubmit={(e)=>{
+            e.preventDefault();
+            handleClick();
+          }}>
           <div className="mb-2">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Name
@@ -274,14 +277,19 @@ export default function Signup() {
                   <input
                     type="number"
                     value={otp}
-                    onChange={(e)=>setOtp(e.target.value)}
+                    onChange={(e)=>{
+                      e.preventDefault();
+                      setOtp(e.target.value)}}
                     className={`block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`}
                   />
                 </div>
                 <Button type="submit" disabled={!optSection} className="mt-6">Register</Button>
               </div>
             )}
-              <Button className="mt-6" type="submit" fullWidth onClick={handleOtpSection}>
+              <Button className="mt-6" type="submit" fullWidth onClick={(e)=>{
+                e.preventDefault();
+                handleOtpSection();
+              }}>
               Send Otp
             </Button>
           
