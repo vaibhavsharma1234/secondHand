@@ -98,9 +98,6 @@ export default function Signup() {
     }
 
   };
-  const handleClickBack = () => {
-    navigate("/product");
-  };
 
   const handleOtpSection =()=>{
     if(name && email && password){
@@ -127,13 +124,6 @@ export default function Signup() {
         </Tooltip> */}
         <ToastContainer />
 
-        <Button
-          onClick={handleClickBack}
-          className="p-4 m-4 hover:bg-black-400 font-bold py-2 px-4 rounded inline-flex items-center"
-        >
-          <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
-          <span>Go Back</span>
-        </Button>
       </div>
       {/* <div className="flex items-center justify-center  w-full p-6 m-auto rounded-md shadow-xl lg:max-w-xl">
         <Card color="transparent" shadow={false}>

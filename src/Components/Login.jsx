@@ -46,21 +46,11 @@ export default function Login() {
       // navigate to the home page
     });
   };
-  const handleClick = () => {
-    navigate("/product");
-  };
   return (
     <>
       <DNavbar />
 
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-        <Button
-          onClick={handleClick}
-          className="p-4 m-4 w-[8vw] hover:bg-black-400  font-bold py-2 px-4 rounded inline-flex items-center"
-        >
-          <ArrowUturnLeftIcon className="h-5 w-5 mr-2" />
-          <span>Go Back</span>
-        </Button>
         <ToastContainer />
         <div className="w-full p-6 m-auto rounded-md  lg:max-w-xl">
           <h1 className="text-3xl font-semibold text-center text-blue-600 uppercase">

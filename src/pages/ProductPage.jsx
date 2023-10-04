@@ -59,7 +59,7 @@ function ProductPage() {
       })
       console.log('hello from all')
       console.log(result)
-      return
+      returnv  
     }
     const newItems = ads.filter((item) => item.category === id)
     console.log('hello from here')
