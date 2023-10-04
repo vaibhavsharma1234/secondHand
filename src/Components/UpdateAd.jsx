@@ -1,10 +1,7 @@
-import { FileUpload } from './FileUpload'
 import { useState, useEffect } from 'react'
-import { FileUpload1 } from './FileUpload1'
 import { baseUrl } from '../config/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import Header from './Header'
 const Updatead = () => {
   const params = useParams()
   console.log(params)
@@ -71,7 +68,6 @@ const Updatead = () => {
   }
   return (
     <div>
-      <Header />
       <section className="bg-white dark:bg-gray-900">
         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">

@@ -6,7 +6,7 @@ import { DataContext } from '../context/DataContext'
 import { useContext,useEffect } from 'react'
 import { baseUrl } from "../config/api";
 import axios from "axios";
-import DNavbar from "./DNavbar";
+import DNavbar from "../Components/DNavbar";
 
 const initialNavigation = [
   { name: "ALL", key: "ALL", href: "#", current: true },
@@ -59,7 +59,7 @@ function ProductPage() {
       })
       console.log('hello from all')
       console.log(result)
-      return
+      returnv  
     }
     const newItems = ads.filter((item) => item.category === id)
     console.log('hello from here')
@@ -88,14 +88,6 @@ function ProductPage() {
 
   // filter
 
- 
-
-
-
-
-
-
-  
 
   return (
     <>

@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const Mailgen = require('mailgen');
 
 const EMAIL= '21310@iiitu.ac.in'
- const    PASSWORD= 'khqeuquhtmkqrdca'
+const PASSWORD= 'khqeuquhtmkqrdca'
 
 const sendMail = (receiverEmailAddress, content, userName, subject) => {
 

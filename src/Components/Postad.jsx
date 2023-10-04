@@ -1,14 +1,11 @@
-import { FileUpload } from "./FileUpload";
 import { useState, useContext } from "react";
 import { FileUpload1 } from "./FileUpload1";
 import { baseUrl } from "../config/api";
 import { useNavigate } from "react-router-dom";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
-import { DataContext } from "../context/DataContext";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DNavbar from "../pages/DNavbar";
+import DNavbar from "./DNavbar";
 const Postad = () => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
