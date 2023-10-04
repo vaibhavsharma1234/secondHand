@@ -52,7 +52,7 @@ export default function Signup() {
       };
       // sent the data to the backend now
       axios.post(`${baseUrl}/api/auth/signup?otp=${otp}`, data).then((res) => {
-        // console.log(res)
+        console.log(res, "from otp")
         const { success } = res.data;
        
         console.log(success);
@@ -81,7 +81,13 @@ export default function Signup() {
         } else {
           toast("error hai vapas try kro from signup");
         }
-      });
+      })
+      .catch((error)=>{
+        console.log(error.response)
+        if(error.response.data.invalidOtp){
+          toast("invalid otp try again ")
+        }
+      })
     }else{
       // navigate('/otp')
       // call the send otp function 

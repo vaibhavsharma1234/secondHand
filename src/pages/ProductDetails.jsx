@@ -47,6 +47,15 @@ function ProductDetails() {
 
   // let user = ''
   useEffect(() => {
+    // Scroll to the top of the page when the component mounts (page loads)
+    window.scrollTo(0, 0);
+
+    // Optionally, you can also scroll to the top when the component unmounts (page changes)
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, []);
+  useEffect(() => {
     const fetchData = async () => {
       await axios.get(`${baseUrl}/api/getads/${id}`).then((res) => {
         // console.log(res.data.images)

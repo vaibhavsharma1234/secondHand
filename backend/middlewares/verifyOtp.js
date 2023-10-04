@@ -10,7 +10,7 @@ function verifyOTP(req, res, next) {
   
     if (!userEnteredOTP || userEnteredOTP != storedOTP) {
       console.log("Invalid OTP");
-      return res.status(400).json({ message: 'Invalid OTP' });
+      return res.status(500).send({ message: 'Invalid OTP',invalidOtp:true });
     }
 
     console.log("OTP Verified");
