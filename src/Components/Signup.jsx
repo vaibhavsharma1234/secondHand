@@ -17,7 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 // import Header from './Header'
 import { baseUrl } from "../config/api";
-import DNavbar from "../pages/DNavbar";
+import DNavbar from "./DNavbar";
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -229,7 +229,7 @@ export default function Signup() {
           </h1>
           <form className="mt-6"  onSubmit={(e)=>{
             e.preventDefault();
-            handleClick();
+            handleClick(e);
           }}>
           <div className="mb-2">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

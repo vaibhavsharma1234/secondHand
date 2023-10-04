@@ -6,7 +6,7 @@ import { DataContext } from '../context/DataContext'
 import { useContext,useEffect } from 'react'
 import { baseUrl } from "../config/api";
 import axios from "axios";
-import DNavbar from "./DNavbar";
+import DNavbar from "../Components/DNavbar";
 
 const initialNavigation = [
   { name: "ALL", key: "ALL", href: "#", current: true },

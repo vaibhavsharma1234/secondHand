@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import DNavbar from "./DNavbar";
-import DefaultMap from "./Map";
+import DNavbar from "../Components/DNavbar";
+import DefaultMap from "../Components/Map";
 function ProductDetails() {
   const navigate = useNavigate()
   const params = useParams();
