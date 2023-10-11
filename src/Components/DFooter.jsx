@@ -8,7 +8,7 @@ function DFooter() {
     
     <Contact/>
 
-    <div class="mb-4 md:my-8 mx-auto md:px-6 mt-24">
+    <div class="mb-4 md:my-8 mx-auto md:px-6 mt-2 md:mt-24">
   {/* <!-- Section: Design Block --> */}
   <section class="text-center md:text-left">
     <div class="flex flex-wrap justify-center">

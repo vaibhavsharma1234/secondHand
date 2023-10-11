@@ -53,13 +53,13 @@ function Contact() {
 
   return (
     <>
-<div class="container mx-auto w-full">
+<div class="container mx-auto w-11/12">
   {/* <!-- Section: Design Block --> */}
   <section>
     <div class="flex flex-wrap">
-      <div class="mb-4 w-full shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12">
-        <h2 class="mb-6 text-xl md:text-3xl font-bold">Contact us</h2>
-        <p class="mb-6 text-sm md:text-base text-neutral-500 dark:text-neutral-300">
+      <div class="w-full mb-2 shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12">
+        <h2 class="mb-4 md:mb-6 text-xl md:text-3xl font-bold">Contact us</h2>
+        <p class="mb-4 md:mb-6 text-sm md:text-base text-neutral-500 dark:text-neutral-300">
         Our team is eager to collaborate, answer your inquiries.
         </p>
         <p class="mb-2 text-sm md:text-base text-neutral-500 dark:text-neutral-300">

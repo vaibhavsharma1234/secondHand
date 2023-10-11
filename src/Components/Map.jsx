@@ -10,7 +10,7 @@ function DefaultMap({lat,long}) {
   
 
   return (
-    <div className='w-3/4 mx-auto'>
+    <div className='w-11/12 md:w-3/4 mx-auto'>
     <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">Product Location</h2>
       <div id="map" className='h-[400px]'></div>
     </div>

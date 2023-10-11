@@ -81,7 +81,7 @@ function ProductDetails() {
     <>
     <DNavbar/>
       <section class="text-gray-600 body-font overflow-hidden">
-        <div class="container px-0 py-24 mx-auto">
+        <div class="container px-4 text-sm md:text-base py-24 mx-auto">
           <div class="lg:w-full mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
@@ -194,11 +194,11 @@ function ProductDetails() {
                 </span>
               </div>
               <p class="leading-relaxed">{description}</p>
-              <p class="leading-relaxed">location {location}</p>
+              <p class="leading-relaxed font-bold">Location: {location}</p>
 
-              <p class="leading-relaxed">category {category}</p>
+              <p class="leading-relaxed font-bold">Category: {category}</p>
 
-              <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
+              <div class="flex mt-2 md:mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
               <div class="flex">
                 <span class="title-font font-medium text-2xl text-gray-900">
                 <i class="fa-solid fa-indian-rupee-sign mr-2"></i>{price}
