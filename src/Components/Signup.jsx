@@ -52,7 +52,7 @@ export default function Signup() {
       };
       // sent the data to the backend now
       axios.post(`${baseUrl}/api/auth/signup?otp=${otp}`, data).then((res) => {
-        // console.log(res)
+        console.log(res, "from otp")
         const { success } = res.data;
 
         console.log(success);
