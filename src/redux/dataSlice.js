@@ -11,7 +11,7 @@ const productSlice = createSlice({
   name: 'product',
   initialState: {
     ads: [],
-    category: initialNavigation,
+    category: 'ALL',
     searchInput: '',
   },
   reducers: {
