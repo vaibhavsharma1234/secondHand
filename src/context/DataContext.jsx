@@ -15,7 +15,7 @@ const DataProvider = ({ children }) => {
   const [signup,setSignUp]=useState(false)
   return (
     // pass those in datacontext which u want globally excess
-    // component ko wrap around
+    // component ko wrap arou
     <DataContext.Provider
       value={{
         result,
