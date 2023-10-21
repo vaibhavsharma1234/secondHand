@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, animateScroll as scroll, scroller } from 'react-scroll';
 import { useNavigate } from "react-router-dom";
-import YourComponent from "../Components/Counter.jsX";
+
 
 function LandingPage() {
   const [tab, setTab] = useState(2);
