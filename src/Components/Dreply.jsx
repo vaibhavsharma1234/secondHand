@@ -1,39 +1,38 @@
-import React from "react";
-import { useContext } from "react";
-import { DataContext } from "../context/DataContext";
-import axios from "axios";
-import { baseUrl } from "../config/api";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeReplyLocally } from '../redux/commentsSlice'; // Replace './commentsSlice' with the correct path
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
+import { baseUrl } from '../config/api';
   import 'react-toastify/dist/ReactToastify.css';
+function Dreply({ reply, adminEmail, id }) {
+  const userEmail = (JSON.parse(sessionStorage.getItem('user')))?.email;
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  const comments = useSelector((state) => state.comments.comments);
+  const dispatch = useDispatch();
 
+  const removeReply = () => {
+    axios
+      .delete(`${baseUrl}/api/comment/delete/replies/${id}/${reply._id}`)
+      .then((res) => {
+        // const updatedComments = comments.map((comment) => {
+        //   if (comment._id === id) {
+        //     return res.data;
+        //   }
+        //   return comment;
+        // });
+        const { _id: commentId } = res.data;
 
-function Dreply({reply, adminEmail,id}) {
-    const userEmail=(JSON.parse(sessionStorage.getItem('user')))?.email
-    // console.log(userEmail,adminEmail,reply.name)
-    const user=(JSON.parse(sessionStorage.getItem('user')))
-    const {comments,setComments}=useContext(DataContext)
-    const removeReply=()=>{
-        // console.log("comment id",id)
-        // console.log("reply",reply)
-        axios
-            .delete(`${baseUrl}/api/comment/delete/replies/${id}/${reply._id}`)
-            .then((res) => {
-                console.log(res)
-                const updatedComments = comments.map(comment => {
-                    if (comment._id === id) {
-                     console.log("matched",comment)
-                     return res.data
-                    }
-                    return comment;
-                  });
-        
-                  setComments(updatedComments);
-                  toast("Reply Deleted Successfully")
-                
-            })
-            .catch(error => console.log(error));
-        
-    }
+        // // Dispatch the action to remove the reply from Redux store
+        const replyId=reply._id
+        dispatch(removeReplyLocally({ id: commentId, replyId }));
+        console.log(res)
+
+        // dispatch(removeComment(id)); // Dispatch the action to remove the comment from Redux store
+        toast('Reply Deleted Successfully');
+      })
+      .catch((error) => console.log(error));
+  }
   return (
     <div>
       <article class="p-6 mb-3 ml-6 lg:ml-12 text-base bg-white rounded-lg dark:bg-gray-900">

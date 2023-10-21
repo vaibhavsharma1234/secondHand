@@ -11,6 +11,7 @@ import ProductDetails from './pages/ProductDetails'
 import Otp from './Components/Otp'
 import DFooter from './Components/DFooter'
 import Map from './Components/Map'
+
 export default function App() {
   return (
     <>

@@ -16,12 +16,15 @@ import { DataContext } from "../context/DataContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import Header from './Header'
+import { setUser, setToken } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
 import { baseUrl } from "../config/api";
 import DNavbar from "./DNavbar";
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const [key, setKey] = useState(0);
   const [optSection, setOtpSection] = useState(false);
   const { signup, setSignUp } = useContext(DataContext);
@@ -52,8 +55,12 @@ export default function Signup() {
       };
       // sent the data to the backend now
       axios.post(`${baseUrl}/api/auth/signup?otp=${otp}`, data).then((res) => {
-        console.log(res, "from otp")
+        console.log(res, "from otp");
         const { success } = res.data;
+        console.log("ressponse", res.data.user);
+              console.log("token", res.data.user.token);
+              dispatch(setUser(res.data.user));
+              dispatch(setToken(res.data.user.token));
 
         console.log(success);
         // if(res)
@@ -69,8 +76,9 @@ export default function Signup() {
               `${baseUrl}/api/postmail/?email=${encodedEmail}&name=${encodedName}&content=${encodedMailCont}`
             )
             .then((res) => {
-              console.log(res);
+              
             });
+
           setName("");
           setEmail("");
           setPassword("");
@@ -95,7 +103,7 @@ export default function Signup() {
       //   toast("otp is sent")
       //   setSignUp(true)
       // }else{
-        toast("fill all details")
+      toast("fill all details");
       // }
     }
   };

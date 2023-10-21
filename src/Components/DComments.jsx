@@ -1,56 +1,50 @@
-import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import { DataContext } from "../context/DataContext";
-import { baseUrl } from "../config/api";
-import Dcomment from "./Dcomment";
-import Dreply from "./Dreply";
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addComment, setComments } from '../redux/commentsSlice'; // Import Redux actions
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+  import axios from 'axios';
+  import Dcomment from './Dcomment'
+  import { baseUrl } from '../config/api';
 function DComments() {
   const params = useParams();
   const { id } = params;
+  const user = useSelector((state) => state.auth.user); // Access user from Redux store
+  const comments = useSelector((state) => state.comments); // Access comments from Redux store
+  const dispatch = useDispatch(); // Initialize the Redux dispatch function
+  const token = useSelector((state) => state.auth.token)
   const initialValues = {
-    name: "",
-    postId: "",
-    email: "",
-
+    name: '',
+    postId: id,
+    email: '',
     date: new Date(),
-    comments: "",
+    comments: '',
   };
-  const user = JSON.parse(sessionStorage.getItem("user"));
+
   const [comment, setComment] = useState(initialValues);
-  const { comments, setComments } = useContext(DataContext);
   const [togle, setTogle] = useState(false);
-  const [showMoreReplies, setShowMoreReplies] = useState(false);
 
-  // ... (other code)
-
-  const toggleReplies = () => {
-    setShowMoreReplies((prevState) => !prevState);
-  };
+  // Fetch comments from API
   useEffect(() => {
-    let id1 = id;
-    const getData = async () => {
-      // api call
-
-      const token = JSON.parse(sessionStorage.getItem("token"));
+    if (!togle) {
+     
       const headers = {
         Authorization: `Bearer ${token}`,
       };
       axios.get(`${baseUrl}/api/comments/${id}`, { headers }).then((res) => {
         console.log(res);
-        setComments(res.data);
+        dispatch(setComments(res.data)); // Dispatch the comments to the Redux store
       });
-    };
-    getData();
+    }
   }, [togle]);
+
   const handleChange = (e) => {
+    // Handle comment changes
     const name = user.data.fullname;
     const email = user.data.email;
     const today = new Date();
-    const options = { year: "numeric", month: "long", day: "numeric" };
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = today.toLocaleDateString(undefined, options);
     setComment({
       ...comment,
@@ -60,27 +54,28 @@ function DComments() {
       date: formattedDate,
       comments: e.target.value,
     });
-    console.log(comment);
   };
+
   const handleSubmit = async (e) => {
-    // make the call for the new comment
-    // add comment
     e.preventDefault();
-    if(!user){
-      toast("login first")
-      return
+    if (!user) {
+      toast('Login first');
+      return;
     }
-    const token = JSON.parse(sessionStorage.getItem("token"));
+   
     const headers = {
       Authorization: `Bearer ${token}`,
     };
-    axios.post(`${baseUrl}/api/comment`, comment, { headers }).then((res) => {
-      console.log(res);
 
+    // Send a new comment to the API and dispatch it to the Redux store
+    axios.post(`${baseUrl}/api/comment`, comment, { headers }).then((res) => {
+      dispatch(addComment(res.data));
+      console.log("res",res)
       setTogle((prevState) => !prevState);
       setComment(initialValues);
     });
   };
+
   return (
     <section class="bg-white dark:bg-gray-900 py-8 lg:py-16 antialiased">
       <ToastContainer/>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, animateScroll as scroll, scroller } from 'react-scroll';
 import { useNavigate } from "react-router-dom";
+import YourComponent from "../Components/Counter.jsX";
 
 function LandingPage() {
   const [tab, setTab] = useState(2);
@@ -13,6 +14,7 @@ naviagte('/product')
  }
   return (
     <>
+    {/* <YourComponent/> */}
       <section className="relative mb-16 md:mb-32">
         <div
           className={`relative w-full h-[450px] md:h-[650px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/SYTO3xs06fU')]`}

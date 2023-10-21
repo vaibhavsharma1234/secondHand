@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { setUser,setToken } from "../redux/authSlice";
+import { useDispatch } from 'react-redux';
+
 import axios from "axios";
 
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
@@ -10,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DNavbar from "./DNavbar";
 export default function Login() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const baseUrl = 'http://localhost:8000'
@@ -32,6 +36,9 @@ export default function Login() {
       const { user, token } = res.data;
       const { success } = user;
       if (success) {
+        dispatch(setUser(user));
+        dispatch(setToken(token));
+        
         window.sessionStorage.setItem("user", JSON.stringify(user));
 
         window.sessionStorage.setItem("token", JSON.stringify(token));

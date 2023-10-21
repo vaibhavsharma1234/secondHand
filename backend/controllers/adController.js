@@ -156,7 +156,8 @@ const postComment = async (req, res) => {
   try {
     const newcomment = await new commentModel(req.body);
     newcomment.save();
-    res.status(200).json({ msg: "saved succesfully comment" });
+    console.log(newcomment)
+    res.status(200).json({ msg: "saved succesfully comment" ,newcomment:newcomment});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

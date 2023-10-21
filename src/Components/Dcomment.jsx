@@ -1,73 +1,57 @@
-import React from "react";
-import Dreply from "./Dreply";
-import { useState,useContext } from "react";
-import axios from "axios";
-import { baseUrl } from "../config/api";
-import { DataContext } from "../context/DataContext";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addReply, removeComment } from '../redux/commentsSlice'; // Import Redux actions
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-function Dcomment({ comment,setTogle }) {
-  const [newReply, setNewReply] = useState("");
-  const user = JSON.parse(sessionStorage.getItem("user"));
-  const { comments, setComments } = useContext(DataContext);
+import 'react-toastify/dist/ReactToastify.css';
+import Dreply from './Dreply'
+import { baseUrl } from '../config/api';
+import axios from 'axios';
+
+
+function Dcomment({ comment, setTogle }) {
+  const [newReply, setNewReply] = useState('');
+  const dispatch = useDispatch(); // Initialize the Redux dispatch function
+//  console.log("comment",comment)
+  const user = useSelector((state)=>state.auth.user);
+const token =useSelector((state)=>state.auth.token)
   const id = comment._id;
-  // reply
-  const [showMoreReplies, setShowMoreReplies] = useState(false);
 
-  // ... (other code)
-
-  const toggleReplies = () => {
-    setShowMoreReplies((prevState) => !prevState);
-  };
   const submitReply = (commentId) => {
-    if(!user){
-        toast("login first")
-        return 
+    if (!user) {
+      toast('Login first');
+      return;
     }
-    console.log(newReply);
-    console.log(commentId);
-    // call to insert the reply
-    const userEmail = JSON.parse(sessionStorage.getItem("user"));
-    console.log(userEmail.email);
+
+    // Create a new reply
+    const userEmail = user.data.email;
     axios
       .post(`${baseUrl}/api/comments/${commentId}/replies`, {
         text: newReply,
-        email: userEmail.email,
+        email: userEmail,
       })
       .then((response) => {
-        //     console.log("first",comments)
-        const updatedComments = comments.map((comment) => {
-          if (comment._id === commentId) {
-            console.log("matched", comment);
-            comment.replies = response.data.replies;
-          }
-          return comment;
-        });
-
-        setComments(updatedComments);
-        //   console.log("third",comments)
-        console.log(response);
-        setNewReply("");
+        // Dispatch the new reply to the Redux store
+        dispatch(addReply({ commentId, reply: response.data }));
+        setNewReply('');
       })
       .catch((error) => console.log(error));
   };
-  const removeComment = async () => {
-    const id = comment._id;
-    // let res = await axios.delete(`${API_URL}/comment/delete/${id}`, {
-    //   headers: {
-    //     authorization: getAccessToken(),
-    //   },
-    // })
-    const token = JSON.parse(sessionStorage.getItem("token"));
+
+  const removeCommentx = async () => {
+    // Make the API call to delete the comment
+    // const token = JSON.parse(sessionStorage.getItem('token'));
     const headers = {
       Authorization: `Bearer ${token}`,
     };
     axios
-      .delete(`${baseUrl}/api/comment/delete/${id}`, { headers })
+      .delete(`${baseUrl}/api/comment/delete/${comment._id}`, { headers })
       .then((res) => {
         console.log(res);
-        //   setComment(initialValues)
-        toast("deleted comment success")
+        toast('Deleted comment success');
+
+        // Dispatch the action to remove the comment from the Redux store
+        dispatch(removeComment(comment._id));
+
         setTogle((prevState) => !prevState);
       });
   };
@@ -97,7 +81,7 @@ function Dcomment({ comment,setTogle }) {
             class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 dark:text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             type="button"
           >
-          {user && comment.email === user.data.email && (<i onClick={removeComment} class="fa-solid fa-trash text-xl text-red-600"></i>)}  
+          {user && comment.email === user.data.email && (<i onClick={removeCommentx} class="fa-solid fa-trash text-xl text-red-600"></i>)}  
            
           </button>
         </footer>
@@ -123,17 +107,10 @@ function Dcomment({ comment,setTogle }) {
           </form>
         </div>
       </article>
-      {comment.replies .slice(0, showMoreReplies ? undefined : 2).map((reply) => (
+      {comment.replies?.map((reply) => (
         <Dreply reply={reply} adminEmail={comment.email} id={comment._id} />
       ))}
-      {comment.replies.length > 2 && (
-        <button
-          onClick={toggleReplies}
-          className="text-blue-500 underline cursor-pointer"
-        >
-          {showMoreReplies ? "Show Less Replies" : "Show More Replies"}
-        </button>
-      )}
+      
     </div>
   );
 }
