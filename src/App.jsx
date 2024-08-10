@@ -11,6 +11,7 @@ import ProductDetails from './pages/ProductDetails'
 import Otp from './Components/Otp'
 import DFooter from './Components/DFooter'
 import Map from './Components/Map'
+// i can lazi load the components using react lazy and suspense but i am not doing it here as it is not required for this project
 export default function App() {
   return (
     <>
@@ -20,10 +21,7 @@ export default function App() {
             <Route path='/map' element={<Map/>}/>
             <Route path='/' element={<LandingPage/>}/>
             <Route path='/product' element={<ProductPage/>}/>
-            {/* <Route path='/product/details' element={<ProductDetails/>}/> */}
             <Route path='/product/details/:id' element={<ProductDetails/>}/>
-            {/* <Route path="/" element={<Home/>} /> */}
-            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/otp" element={<Otp />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />

@@ -15,7 +15,7 @@ naviagte('/product')
     <>
       <section className="relative mb-16 md:mb-32">
         <div
-          className={`relative w-full h-[450px] md:h-[650px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/SYTO3xs06fU')]`}
+          className={`relative w-full h-[450px] md:h-[650px] flex bg-no-repeat bg-cover bg-[url('https://www.alliedc.com/wp-content/uploads/2021/05/marvin-meyer-SYTO3xs06fU-unsplash-scaled-1-1.jpeg')]`}
         ></div>
         <div className="flex absolute bottom-12 w-full z-50">
           <div className="w-1/4 flex flex-col pl-4 sm:pl-12 lg:pl-28 gap-3 md:gap-8 h-full text-white">
@@ -63,12 +63,12 @@ naviagte('/product')
         </div>
         <div className="flex my-6 md:my-12 w-full gap-2 md:gap-8">
           <div
-            className={`relative w-3/5 h-[200px] sm:h-[400px] md:h-[500px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/_aXa21cf7rY')] rounded-3xl`}
+            className={`relative w-3/5 h-[200px] sm:h-[400px] md:h-[500px] flex bg-no-repeat bg-cover bg-[url('https://tse4.mm.bing.net/th?id=OIP.tDhZv7_RTkzylyiN7fIjCAHaE7&pid=Api&P=0&h=220')] rounded-3xl`}
           >
             <div className="absolute z-20 rounded-3xl h-full bg-gradient-to-r from-black/30 to-black/30 top-0 bottom-0 left-0 right-0"></div>
           </div>
           <div
-            className={`relative w-2/5 h-[200px] sm:h-[400px] md:h-[500px] flex bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/ip9R11FMbV8')] rounded-3xl`}
+            className={`relative w-2/5 h-[200px] sm:h-[400px] md:h-[500px] flex bg-no-repeat bg-cover bg-[url('https://tse4.mm.bing.net/th?id=OIP.lN0TaeL1Ng9dl_pA3iKU6AHaEK&pid=Api&P=0&h=220')] rounded-3xl`}
           >
             <div className="absolute z-20 rounded-3xl h-full bg-gradient-to-r from-black/30 to-black/30 top-0 bottom-0 left-0 right-0"></div>
           </div>
@@ -153,31 +153,31 @@ naviagte('/product')
             <div className="row-span-2 col-span-2 bg-blue-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/SqLyNHbsLKQ"}
+                src={"https://images.unsplash.com/photo-1578269174432-a8073d86c2e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZWQlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/xsGxhtAsfSA"}
+                src={"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHVzZWQlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/h10-NImYZHs"}
+                src={"https://images.unsplash.com/photo-1715022646679-979ef2171c24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fHVzZWQlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/LUGuCtvlk1Q"}
+                src={"https://images.unsplash.com/photo-1640890959827-6307611b34a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI0fHx1c2VkJTIwcHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-blue-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/M_dJ_ScwaLE"}
+                src={"https://images.unsplash.com/photo-1508025207422-d8d96174b278?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUyfHx1c2VkJTIwcHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
           </div>
@@ -187,31 +187,31 @@ naviagte('/product')
             <div className="row-span-2 col-span-2 bg-green-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/eF1XTtvDpYA"}
+                src={"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZWxlY3Ryb25pYyUyMHByb2R1Y3RzfGVufDB8fDB8fHww"}
               ></img>
             </div>
             <div className="row-span-1 bg-green-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/_WdDaZM6VIM"}
+                src={"https://images.unsplash.com/photo-1629363447921-d0930440a5b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGVsZWN0cm9uaWMlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-green-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/aiWjNA46Urc"}
+                src={"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGVsZWN0cm9uaWMlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-green-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/PXaQXThG1FY"}
+                src={"https://images.unsplash.com/photo-1611174330152-b8d2429ec0a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGVsZWN0cm9uaWMlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-green-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/1SAnrIxw5OY"}
+                src={"https://images.unsplash.com/photo-1488149048941-581936ced6d6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGVsZWN0cm9uaWMlMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D"}
               ></img>
             </div>
           </div>
@@ -221,31 +221,31 @@ naviagte('/product')
             <div className="row-span-2 col-span-2 bg-red-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/qYxIVsHpDDo"}
+                src={"https://plus.unsplash.com/premium_photo-1667251758769-398dca4d5f1c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-red-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/OMXPrCAhxrE"}
+                src={"https://plus.unsplash.com/premium_photo-1663956148012-52c4b284dbca?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHN0dWR5JTIwbWF0ZXJpYWxzJTIwcHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-red-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/SwCMZwrhQm8"}
+                src={"https://images.unsplash.com/photo-1453748952126-ac63757c7915?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEwfHxzdHVkeSUyMG1hdGVyaWFscyUyMHByb2R1Y3RzfGVufDB8fDB8fHww"}
               ></img>
             </div>
             <div className="row-span-1 bg-red-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/OLvQEjwCSVI"}
+                src={"https://images.unsplash.com/photo-1584697963999-03d94b4906dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fHN0dWR5JTIwbWF0ZXJpYWxzJTIwcHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-red-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/pakTZIspHO0"}
+                src={"https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTV8fHN0dWR5JTIwbWF0ZXJpYWxzJTIwcHJvZHVjdHN8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
           </div>
@@ -255,31 +255,31 @@ naviagte('/product')
             <div className="row-span-2 col-span-2 bg-amber-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/2KZwt-Jtl8c"}
+                src={"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/NOpsC3nWTzY"}
+                src={"https://images.unsplash.com/photo-1655176471504-98ce2bd8af06?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTYyfHxwcm9kdWN0cyUyMHNlbGx8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/dGIEMeN2MV8"}
+                src={"https://images.unsplash.com/photo-1695927521778-6e0579cbe9ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTgyfHxwcm9kdWN0cyUyMHNlbGx8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/phS37wg8cQg"}
+                src={"https://images.unsplash.com/photo-1611308725032-74f0a551d018?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTk5fHxwcm9kdWN0cyUyMHNlbGx8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
             <div className="row-span-1 bg-amber-400">
               <img
                 className="w-full h-full object-cover"
-                src={"https://source.unsplash.com/Y6Hn79vRcXU"}
+                src={"https://images.unsplash.com/photo-1653007939376-7ab3d9e95f8b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA4fHxwcm9kdWN0cyUyMHNlbGx8ZW58MHx8MHx8fDA%3D"}
               ></img>
             </div>
           </div>
@@ -316,7 +316,7 @@ naviagte('/product')
                 <li>Enjoy a more sustainable and affordable college life.</li>
               </ul>
             </div>
-            <div className="h-60 md:h-72 w-1/2 bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/tVkdGtEe2C4')]"></div>
+            <div className="h-60 md:h-72 w-3/4 bg-no-repeat bg-cover bg-[url('https://plus.unsplash.com/premium_photo-1674675647105-7b8c3ee82717?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzN8fGl0ZW1zfGVufDB8fDB8fHww')]"></div>
           </div>
         </div>
         <div className="flex flex-col md:flex-row py-4 md:py-8 border-t-2">
@@ -333,7 +333,7 @@ naviagte('/product')
                 <li>Easy listing process.</li>
               </ul>
             </div>
-            <div className="h-60 md:h-72 w-1/2 bg-green-700 bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/I5lR4R0CM6g')]"></div>
+            <div className="h-60 md:h-72 w-3/4 bg-green-700 bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1642543348791-b1cc1b07e756?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"></div>
           </div>
         </div>
         <div className="flex flex-col md:flex-row py-4 md:py-8 border-t-2">
@@ -350,13 +350,13 @@ naviagte('/product')
                 <li>Easy listing process.</li>
               </ul>
             </div>
-            <div className="h-60 md:h-72 w-1/2 bg-green-700 bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/ZbJfBi8H7KM')]"></div>
+            <div className="h-60 md:h-72 w-3/4 bg-green-700 bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1642543348781-ed9c6d67ed20?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fHNlbGx8ZW58MHx8MHx8fDA%3D')]"></div>
           </div>
         </div>
       </section>
 
       <section className="flex w-11/12 mt-12 mb-16 md:mb-32 mx-auto gap-2 md:gap-12" id="explore">
-        <div className="w-1/2 h-[300px] md:h-[500px] bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/X5BWooeO4Cw')] bg-gray-400 rounded-xl">
+        <div className="w-1/2 h-[300px] md:h-[500px] bg-no-repeat bg-cover bg-[url('https://ogardensmart.com/wp-content/uploads/2021/02/hutomo-abrianto-X5BWooeO4Cw-unsplash.jpg')] bg-gray-400 rounded-xl">
           <div className="text-center mx-auto w-11/12 md:w-3/5 text-lg sm:text-xl md:text-4xl font-bold mt-16 md:mt-24">
             Explore Our Exciting Listings
           </div>
@@ -366,7 +366,7 @@ naviagte('/product')
             </button>
           </div>
         </div>
-        <div className="w-1/2 h-[300px] md:h-[500px] bg-no-repeat bg-cover bg-[url('https://source.unsplash.com/h8nxGssjQXs')] bg-gray-400 rounded-xl">
+        <div className="w-1/2 h-[300px] md:h-[500px] bg-no-repeat bg-cover bg-[url('https://plus.unsplash.com/premium_photo-1661605653366-b1a6a6831cd4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29tbXVuaXR5fGVufDB8fDB8fHww')] bg-gray-400 rounded-xl">
           <div  className="text-center text-white mx-auto w-11/12 md:w-3/5 text-lg sm:text-xl md:text-4xl font-bold mt-16 md:mt-24">
             
             Join SecondHand Community

@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const Mailgen = require('mailgen');
 
-const EMAIL= '21310@iiitu.ac.in'
+const EMAIL= 'vaibhavsharma34cpp@gmail.com'
 const PASSWORD= process.env.ACCOUNT_SECRET_KEY
 
 const sendMail = (receiverEmailAddress, content, userName, subject) => {
