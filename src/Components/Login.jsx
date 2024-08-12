@@ -42,8 +42,10 @@ export default function Login() {
 
         navigate("/product");
       }
-
       // navigate to the home page
+    }).catch((err) => {
+      console.log(err);
+      toast.error("Invalid credentials");
     });
   };
   return (
@@ -64,6 +66,7 @@ export default function Login() {
               <input
                 type="email"
                 value={email || " "}
+                autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               />
@@ -77,6 +80,7 @@ export default function Login() {
                 type="password"
                 value={password || ""}
                 onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               />
             </div>

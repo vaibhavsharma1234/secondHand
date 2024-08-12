@@ -79,7 +79,7 @@ function Contact() {
           <div class="relative mb-4 md:mb-6" data-te-input-wrapper-init>
             <input type="email"
               class="block min-h-[auto] w-full rounded border-2 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none"
-              id="exampleInput91" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+              id="exampleInput912" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             
           </div>
           <div class="relative mb-4 md:mb-6" data-te-input-wrapper-init>

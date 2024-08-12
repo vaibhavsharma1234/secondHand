@@ -1,17 +1,10 @@
 import {
-  Card,
-  Input,
-  Checkbox,
   Button,
-  Typography,
-  Tooltip,
 } from "@material-tailwind/react";
-// import { ArrowUTurnIcon } from 'hero'
-import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
-// import {  } from '@material-tailwind/react'
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import CountdownTimer from "./Countdown";
 import { DataContext } from "../context/DataContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,6 +19,8 @@ export default function Signup() {
   const [optSection, setOtpSection] = useState(false);
   const { signup, setSignUp } = useContext(DataContext);
   const [otp, setOtp] = useState("");
+  const [resendOtp, setResendOtp] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
   // const baseUrl = 'http://localhost:8000'
   useEffect(() => {
     // Scroll to the top of the page when the component mounts (page loads)
@@ -83,137 +78,52 @@ export default function Signup() {
           setSignUp(false);
           // navigate to  the login page
         } else {
-          toast("error hai vapas try kro from signup");
+          toast.error("error, please try again");
         }
       });
     } else {
-      // navigate('/otp')
-      // call the send otp function
-      // if(name && email && password){
-      //   // alert("call the send otp function")
-      //   axios.post(`${baseUrl}/api/otp/generate/?email=${email}&name=${name}`)
-      //   toast("otp is sent")
-      //   setSignUp(true)
-      // }else{
         toast("fill all details")
-      // }
     }
   };
 
   const handleOtpSection = () => {
     if (name && email && password) {
-      setOtpSection(true);
-      // alert("call the send otp function")
-      axios.post(`${baseUrl}/api/otp/generate/?email=${email}&name=${name}`);
-      toast("otp is sent");
-      setSignUp(true);
+      // check whether the email exist or not
+      axios.post(`${baseUrl}/api/auth/checkEmail`, { email }).then((res) => {
+        console.log(res);
+        if (res.data.exists) {
+          toast.error("email already exist");
+        } else {
+          setOtpSection(true);
+          setTimeLeft(30);
+          setTimeout(() => {
+            setResendOtp(true);
+          }, 30000);
+          axios.post(`${baseUrl}/api/otp/generate/?email=${email}&name=${name}`);
+          toast("otp is sent");
+          setSignUp(true);
+        }
+      });
     } else {
       return toast("fill all details");
     }
   };
+
+  const handleResendOtp = () => {
+    axios.post(`${baseUrl}/api/otp/generate/?email=${email}&name=${name}`);
+    toast("otp is sent");
+    setResendOtp(false);
+    setTimeLeft(30);
+    setTimeout(() => {
+      setResendOtp(true);
+    }, 30000);
+  }
   return (
     <>
-      {/* <Header /> */}
       <DNavbar />
       <div>
-        {/* <Tooltip content="go-back">
-          <span
-            onClick={handleClickBack}
-            className="cursor-pointer block w-12 rounded-full border border-blue-500/5 bg-blue-500/5 p-3 text-blue-500 transition-colors hover:border-blue-500/10 hover:bg-blue-500/10 hover:!opacity-100 group-hover:opacity-70"
-          >
-
-          </span>
-        </Tooltip> */}
         <ToastContainer />
       </div>
-      {/* <div className="flex items-center justify-center  w-full p-6 m-auto rounded-md shadow-xl lg:max-w-xl">
-        <Card color="transparent" shadow={false}>
-          <Typography variant="h4" color="blue-gray" className="text-center">
-            Sign Up
-          </Typography>
-          <Typography color="gray" className="mt-1 font-normal text-center">
-            Enter your details to register.
-          </Typography>
-          <form
-            className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 "
-            onSubmit={handleClick}
-            key={key}
-          >
-            <div className="mb-4 flex flex-col gap-6">
-              <Input
-                size="lg"
-                label="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <Input
-                size="lg"
-                label="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Input
-                type="password"
-                size="lg"
-                value={password}
-                label="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <Checkbox
-              label={
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="flex items-center font-normal"
-                  defaultChecked={false}
-                >
-                  I agree the
-                  <a
-                    href="#"
-                    className="font-medium transition-colors hover:text-blue-500"
-                  >
-                    &nbsp;Terms and Conditions
-                  </a>
-                </Typography>
-              }
-              containerProps={{ className: "-ml-2.5" }}
-            />
-            {optSection && (
-              <div>
-                <label
-                  htmlFor="number"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  OTP
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="number"
-                    value={otp}
-                    onChange={(e)=>setOtp(e.target.value)}
-                    className={`block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`}
-                  />
-                </div>
-                <Button type="submit" disabled={!optSection} className="mt-6">Register</Button>
-              </div>
-            )}
-            <Button className="mt-6" type="submit" fullWidth onClick={handleOtpSection}>
-              Send Otp
-            </Button>
-
-            <Typography color="gray" className="mt-4 text-center font-normal">
-              Already have an account?{" "}
-              <Link
-                to="/login"
-                className="font-medium text-blue-500 transition-colors hover:text-blue-700"
-              >
-                Sign In
-              </Link>
-            </Typography>
-          </form>
-        </Card>
-      </div> */}
       <div className="w-full p-6 mt-28 mx-auto rounded-md h-screen  lg:max-w-xl">
         <h1 className="text-3xl font-semibold text-center text-blue-600 uppercase">
           Sign Up
@@ -225,7 +135,10 @@ export default function Signup() {
             handleClick(e);
           }}
         >
-          <div className="mb-2">
+          {
+            !optSection && (
+              <>
+                <div className="mb-2">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Name
             </label>
@@ -234,6 +147,7 @@ export default function Signup() {
               value={name || " "}
               onChange={(e) => setName(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              autocomplete="name"
             />
           </div>
           <div className="mb-2">
@@ -245,6 +159,7 @@ export default function Signup() {
               value={email || " "}
               onChange={(e) => setEmail(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              autoComplete="email"
             />
           </div>
 
@@ -257,10 +172,16 @@ export default function Signup() {
               value={password || ""}
               onChange={(e) => setPassword(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              autocomplete="current-password"
             />
           </div>
+              </>
+            )
+          }
+        
           {optSection && (
             <div>
+              <p className="italic text-sm">We have sent an OTP to your email; please check it</p>
               <label
                 htmlFor="number"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -279,43 +200,35 @@ export default function Signup() {
                 />
               </div>
               <Button type="submit" disabled={!optSection} className="mt-6">
-                Register
+                Verify Otp
+              </Button>
+              <Button onClick={handleResendOtp} disabled={!resendOtp} className="mt-6 ml-4">
+                Resend Otp
+                <CountdownTimer timeLeft={timeLeft} setTimeLeft={setTimeLeft} />
               </Button>
             </div>
           )}
-          <Button
-            className="mt-6"
-            type="submit"
-            fullWidth
-            onClick={(e) => {
-              e.preventDefault();
-              handleOtpSection();
-            }}
-          >
-            Send Otp
-          </Button>
-        </form>
-        {/* <div className="relative flex items-center justify-center w-full mt-6 border border-t">
-            <div className="absolute px-5 bg-white">Or</div>
-          </div> */}
-        {/* <div className="flex mt-4 gap-x-2">
-            <button
-              type="button"
-              className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
+          {
+            !optSection && (
+              <Button
+              className="mt-6"
+              type="submit"
+              fullWidth
+              onClick={(e) => {
+                e.preventDefault();
+                handleOtpSection();
+              }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                className="w-5 h-5 fill-current"
-              >
-                <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
-              </svg>
-            </button>
-          </div> */}
+              Register
+            </Button>
+            )
+          }
+
+        </form>
 
         <p className="mt-8 text-xs font-light text-center text-gray-700">
           {" "}
-          Don't have an account?{" "}
+         Already have an account?{" "}
           <Link
             to="/login"
             className="font-medium text-blue-500 transition-colors hover:text-blue-700"
